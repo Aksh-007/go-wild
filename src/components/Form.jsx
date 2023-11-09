@@ -1,6 +1,33 @@
-import { Box, Typography, Container, TextField } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Container,
+  TextField,
+  MenuItem,
+  Button,
+} from "@mui/material";
+import EditIcon from "@mui/icons-material/Edit";
 
 const Form = () => {
+  // Titles values
+  const titles = [
+    {
+      value: "Mr",
+      label: "Mr",
+    },
+    {
+      value: "Mrs",
+      label: "Mrs",
+    },
+    {
+      value: "Miss",
+      label: "Miss",
+    },
+    {
+      value: "Ms",
+      label: "Ms",
+    },
+  ];
   return (
     <Box>
       {/* Partner as Tour Guide section */}
@@ -261,19 +288,24 @@ const Form = () => {
             <Box
               sx={{
                 width: {
-                  sm: "100%",
+                  xs: "100%",
                 },
                 padding: "30px",
                 boxShadow: 3,
                 borderRadius: "10px",
+                marginTop: {
+                  xs: "1rem",
+                },
               }}
             >
+              {" "}
               <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
                 Titles
               </Typography>
               <TextField
                 id="filled-basic"
-                label="Filled"
+                select
+                label="Titles"
                 variant="filled"
                 sx={{
                   marginTop: "1rem",
@@ -281,7 +313,13 @@ const Form = () => {
                     xs: "100%",
                   },
                 }}
-              />
+              >
+                {titles.map((title) => (
+                  <MenuItem key={title.value} value={title.value}>
+                    {title.value}
+                  </MenuItem>
+                ))}
+              </TextField>
             </Box>
             <Box
               sx={{
@@ -369,7 +407,18 @@ const Form = () => {
             }}
           >
             <Typography>Submit Your Image</Typography>
-            <Box></Box>
+            <Button
+              sx={{
+                borderRadius: "4px ",
+                bgcolor: "#2ED47A",
+                color: "#ffffff",
+                "&:hover:": {
+                  bgcolor: "#2ED47A",
+                },
+              }}
+            >
+              <EditIcon /> Add a file
+            </Button>
           </Box>
         </Container>
       </Box>
