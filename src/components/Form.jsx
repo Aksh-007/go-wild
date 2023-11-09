@@ -1,19 +1,21 @@
-import { Box, Typography, Container } from "@mui/material";
+import { Box, Typography, Container, TextField } from "@mui/material";
 
 const Form = () => {
   return (
     <Box>
-        {/* Partner as Tour Guide section */}
+      {/* Partner as Tour Guide section */}
       <Box sx={{ bgcolor: "#31E3AE" }}>
         <Container
           sx={{
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            height: "180px",
+            height: "160px",
           }}
         >
-          <Typography sx={{ fontSize: "2rem" }}>
+          <Typography
+            sx={{ fontSize: "2.5rem", color: "#ffffff", fontWeight: 900 }}
+          >
             Partner as Tour Guide
           </Typography>
           <Box>
@@ -207,6 +209,167 @@ const Form = () => {
                 </linearGradient>
               </defs>
             </svg>
+          </Box>
+        </Container>
+      </Box>
+      <Box>
+        <Container
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "30px",
+          }}
+        >
+          <Typography sx={{ fontSize: "1.5rem", paddingTop: "35px" }}>
+            &quot;A Privacy Policy is a crucial document that outlines how you
+            collect, use, store, and protect user data in your app. Here&apos;s
+            a general structure for a Privacy Policy, along with what to include
+            in each section Start with an introduction that explains the purpose
+            of the Privacy Policy and its importance. Mention your app&apos;s
+            name and a brief description of what it does. A Privacy Policy is a
+            crucial document that outlines how you collect, use, store, and
+            protect user data in your app. Here&apos;s a general structure for a
+            Privacy Policy, along with what to include in each section Start
+            with an introduction that explains the purpose of the Privacy Policy
+            and its importance. Mention your app&apos;s name and a brief
+            description of what it does.
+          </Typography>
+          <Typography sx={{ fontSize: "2.2rem", fontWeight: "bold" }}>
+            Kindly fill up these details
+          </Typography>
+          <Typography
+            sx={{
+              fontSize: "1.8rem",
+              fontWeight: "bold",
+            }}
+          >
+            Personal Details
+          </Typography>
+          {/* Personal Details */}
+          <Box
+            sx={{
+              display: {
+                sm: "flex",
+              },
+              flexDirection: {
+                sm: "column",
+                md: "row",
+              },
+              gap: "20px",
+            }}
+          >
+            <Box
+              sx={{
+                width: {
+                  sm: "100%",
+                },
+                padding: "30px",
+                boxShadow: 3,
+                borderRadius: "10px",
+              }}
+            >
+              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                Titles
+              </Typography>
+              <TextField
+                id="filled-basic"
+                label="Filled"
+                variant="filled"
+                sx={{
+                  marginTop: "1rem",
+                  width: {
+                    xs: "100%",
+                  },
+                }}
+              />
+            </Box>
+            <Box
+              sx={{
+                width: {
+                  xs: "100%",
+                },
+                padding: "30px",
+                boxShadow: 3,
+                borderRadius: "10px",
+                marginTop: {
+                  xs: "1rem",
+                },
+              }}
+            >
+              {" "}
+              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                First Name
+              </Typography>
+              <TextField
+                id="filled-basic"
+                label="first Name"
+                variant="filled"
+                sx={{
+                  marginTop: "1rem",
+                  width: {
+                    xs: "100%",
+                  },
+                }}
+              />
+            </Box>
+            <Box
+              sx={{
+                width: {
+                  xs: "100%",
+                },
+                padding: "30px",
+                boxShadow: 3,
+                borderRadius: "10px",
+                marginTop: {
+                  xs: "1rem",
+                },
+              }}
+            >
+              {" "}
+              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                Last Name
+              </Typography>
+              <TextField
+                id="filled-basic"
+                label="Last Name"
+                variant="filled"
+                sx={{
+                  marginTop: "1rem",
+                  width: {
+                    xs: "100%",
+                  },
+                }}
+              />
+            </Box>
+          </Box>
+
+          {/* Bio container */}
+          <Box
+            sx={{
+              padding: "30px",
+              boxShadow: 3,
+              borderRadius: "10px",
+            }}
+          >
+            <Typography>Bio</Typography>
+            <TextField
+              id="filled-basic"
+              label="Bio"
+              variant="filled"
+              sx={{ marginTop: "1rem", width: "100%" }}
+            />
+          </Box>
+
+          {/* Submit your Image */}
+          <Box
+            sx={{
+              padding: "30px",
+              boxShadow: 3,
+              borderRadius: "10px",
+            }}
+          >
+            <Typography>Submit Your Image</Typography>
+            <Box></Box>
           </Box>
         </Container>
       </Box>
