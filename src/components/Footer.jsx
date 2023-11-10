@@ -5,7 +5,7 @@ const Footer = () => {
     <Box
       sx={{
         bgcolor: "#253D65",
-        height: "40vh",
+        // height: "40vh",
         color: "#DEDEDE",
       }}
     >
@@ -64,12 +64,28 @@ const Footer = () => {
         </Box>
         <hr />
         {/* Bottom Footer */}
-        <Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: {
+              xs: "column",
+              sm: "row",
+            },
+            justifyContent: "space-between",
+            padding: "10px 0px",
+          }}
+        >
           {/* Left Side Copyright */}
           <Box>Copyrights@2023. All rights reserved</Box>
 
           {/* Right Side footer */}
-          <Box>
+          <Box
+            sx={{
+              marginTop: {
+                xs: "10px",
+              },
+            }}
+          >
             <Typography>Terms of Servces | Privacy Policy</Typography>
           </Box>
         </Box>
