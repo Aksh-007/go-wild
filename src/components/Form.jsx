@@ -373,9 +373,6 @@ const Form = () => {
               }}
             >
               {" "}
-              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
-                Titles
-              </Typography>
               <TextField
                 id="filled-basic"
                 select
@@ -463,7 +460,9 @@ const Form = () => {
               borderRadius: "10px",
             }}
           >
-            <Typography>Bio</Typography>
+            <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+              Bio
+            </Typography>
             <TextField
               id="filled-basic"
               label="Bio"
@@ -480,7 +479,9 @@ const Form = () => {
               borderRadius: "10px",
             }}
           >
-            <Typography>Submit Your Image</Typography>
+            <Typography sx={{ fontWeight: 600, letterSpacing: "1.6px" }}>
+              Submit Your Image
+            </Typography>
             <div className="flex items-center gap-4">
               <Button
                 component="label"
@@ -529,7 +530,6 @@ const Form = () => {
               sx={{
                 width: {
                   xs: "100%", // Set to 100% on small devices
-                  sm: "45%", // Set to 45% on larger devices
                 },
                 padding: "30px",
                 boxShadow: 3,
@@ -546,7 +546,9 @@ const Form = () => {
                 <DatePicker
                   sx={{
                     marginTop: "1rem",
-                    width: "100%", // Set to 100% width
+                    width: {
+                      xs: "100%",
+                    },
                     bgcolor: "#E8E8E8",
                   }}
                 />
@@ -589,7 +591,7 @@ const Form = () => {
             </Box>
           </Box>
 
-          {/*Your Loaction Section  */}
+          {/*Your location Section  */}
           <Typography
             sx={{
               fontWeight: 600,
@@ -723,6 +725,426 @@ const Form = () => {
               </TextField>
             </Box>
           </Box>
+
+          {/* Your Contact information */}
+          <Typography
+            sx={{
+              fontWeight: 600,
+              color: "#1D242E",
+              fontSize: {
+                xs: "1.5rem",
+                sm: "2rem",
+              },
+            }}
+          >
+            Your Contact Information
+          </Typography>
+          <Box
+            sx={{
+              display: {
+                sm: "flex",
+              },
+              flexDirection: {
+                xs: "column",
+                sm: "row",
+              },
+              gap: "20px",
+            }}
+          >
+            <Box
+              sx={{
+                width: {
+                  xs: "100%",
+                  sm: "50%",
+                },
+                padding: "30px",
+                boxShadow: 3,
+                borderRadius: "10px",
+                marginTop: {
+                  xs: "1rem",
+                },
+              }}
+            >
+              {" "}
+              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                Contact No.
+              </Typography>
+              <TextField
+                id="filled-basic"
+                label="Contact"
+                variant="filled"
+                type="number"
+                sx={{
+                  marginTop: "1rem",
+                  width: "100%",
+                }}
+              />
+            </Box>
+            <Box
+              sx={{
+                width: {
+                  xs: "100%",
+                  sm: "50%",
+                },
+                padding: "30px",
+                boxShadow: 3,
+                borderRadius: "10px",
+                marginTop: {
+                  xs: "1rem",
+                },
+              }}
+            >
+              {" "}
+              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                Whatsapp No.
+              </Typography>
+              <TextField
+                id="filled-basic"
+                label="Whatsapp"
+                variant="filled"
+                type="number"
+                sx={{
+                  marginTop: "1rem",
+                  width: "100%",
+                }}
+              />
+            </Box>
+          </Box>
+
+          {/* Email id Field */}
+          <Box
+            sx={{
+              padding: "30px",
+              boxShadow: 3,
+              borderRadius: "10px",
+            }}
+          >
+            <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+              Email id
+            </Typography>
+            <TextField
+              id="filled-basic"
+              label="user@gmail.com"
+              variant="filled"
+              sx={{ marginTop: "1rem", width: "100%" }}
+            />
+          </Box>
+
+          {/* Additional information */}
+          <Typography
+            sx={{
+              fontWeight: 600,
+              color: "#1D242E",
+              fontSize: {
+                xs: "1.5rem",
+                sm: "2rem",
+              },
+            }}
+          >
+            Additional Information
+          </Typography>
+          {/* language */}
+          <Box
+            sx={{
+              padding: "30px",
+              boxShadow: 3,
+              borderRadius: "10px",
+            }}
+          >
+            <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+              Languages
+            </Typography>
+            <TextField
+              id="filled-basic"
+              select
+              label="City"
+              variant="filled"
+              sx={{
+                marginTop: "1rem",
+                width: {
+                  xs: "100%",
+                },
+              }}
+            >
+              {City.map((city) => (
+                <MenuItem key={city.value} value={city.value}>
+                  {city.value}
+                </MenuItem>
+              ))}
+            </TextField>
+          </Box>
+          {/* Activites */}
+          <Box
+            sx={{
+              padding: "30px",
+              boxShadow: 3,
+              borderRadius: "10px",
+            }}
+          >
+            <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+              Activites
+            </Typography>
+            <TextField
+              id="filled-basic"
+              select
+              label="City"
+              variant="filled"
+              sx={{
+                marginTop: "1rem",
+                width: {
+                  xs: "100%",
+                },
+              }}
+            >
+              {City.map((city) => (
+                <MenuItem key={city.value} value={city.value}>
+                  {city.value}
+                </MenuItem>
+              ))}
+            </TextField>
+          </Box>
+          {/* Hobbies */}
+          <Box
+            sx={{
+              padding: "30px",
+              boxShadow: 3,
+              borderRadius: "10px",
+            }}
+          >
+            <Typography
+              sx={{
+                color: "#000",
+                fontSize: "1.2rem",
+                fontWeight: 600,
+                letterSpacing: "2.6px",
+              }}
+            >
+              Hobbies
+            </Typography>
+            <TextField
+              id="filled-basic"
+              select
+              label="City"
+              variant="filled"
+              sx={{
+                marginTop: "1rem",
+                width: {
+                  xs: "100%",
+                },
+              }}
+            >
+              {City.map((city) => (
+                <MenuItem key={city.value} value={city.value}>
+                  {city.value}
+                </MenuItem>
+              ))}
+            </TextField>
+          </Box>
+
+          {/* Guide Spot */}
+          <Typography
+            sx={{
+              fontWeight: 600,
+              color: "#1D242E",
+              fontSize: {
+                xs: "1.5rem",
+                sm: "2rem",
+              },
+            }}
+          >
+            Guide Spot
+          </Typography>
+          <Box
+            sx={{
+              display: {
+                sm: "flex",
+              },
+              flexDirection: {
+                xs: "column",
+                sm: "row",
+              },
+              gap: "20px",
+            }}
+          >
+            <Box
+              sx={{
+                width: {
+                  xs: "100%",
+                  sm: "50%",
+                },
+                padding: "30px",
+                boxShadow: 3,
+                borderRadius: "10px",
+                marginTop: {
+                  xs: "1rem",
+                },
+              }}
+            >
+              {" "}
+              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                City
+              </Typography>
+              <TextField
+                id="filled-basic"
+                select
+                label="City"
+                variant="filled"
+                sx={{
+                  marginTop: "1rem",
+                  width: {
+                    xs: "100%",
+                  },
+                }}
+              >
+                {City.map((city) => (
+                  <MenuItem key={city.value} value={city.value}>
+                    {city.value}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Box>
+            <Box
+              sx={{
+                width: {
+                  xs: "100%",
+                  sm: "50%",
+                },
+                padding: "30px",
+                boxShadow: 3,
+                borderRadius: "10px",
+                marginTop: {
+                  xs: "1rem",
+                },
+              }}
+            >
+              {" "}
+              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                Places
+              </Typography>
+              <TextField
+                id="filled-basic"
+                select
+                label="Places"
+                variant="filled"
+                sx={{
+                  marginTop: "1rem",
+                  width: {
+                    xs: "100%",
+                  },
+                }}
+              >
+                {City.map((city) => (
+                  <MenuItem key={city.value} value={city.value}>
+                    {city.value}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Box>
+          </Box>
+
+          {/* Experience & Price*/}
+          <Typography
+            sx={{
+              fontWeight: 600,
+              color: "#1D242E",
+              fontSize: {
+                xs: "1.5rem",
+                sm: "2rem",
+              },
+            }}
+          >
+            Experience & price
+          </Typography>
+          <Box
+            sx={{
+              display: {
+                sm: "flex",
+              },
+              flexDirection: {
+                xs: "column",
+                sm: "row",
+              },
+              gap: "20px",
+            }}
+          >
+            <Box
+              sx={{
+                width: {
+                  xs: "100%",
+                  sm: "50%",
+                },
+                padding: "30px",
+                boxShadow: 3,
+                borderRadius: "10px",
+                marginTop: {
+                  xs: "1rem",
+                },
+              }}
+            >
+              {" "}
+              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                Years of Experience
+              </Typography>
+              <TextField
+                id="filled-basic"
+                select
+                label="Select year"
+                variant="filled"
+                sx={{
+                  marginTop: "1rem",
+                  width: {
+                    xs: "100%",
+                  },
+                }}
+              >
+                {City.map((city) => (
+                  <MenuItem key={city.value} value={city.value}>
+                    {city.value}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Box>
+            <Box
+              sx={{
+                width: {
+                  xs: "100%",
+                  sm: "50%",
+                },
+                padding: "30px",
+                boxShadow: 3,
+                borderRadius: "10px",
+                marginTop: {
+                  xs: "1rem",
+                },
+              }}
+            >
+              {" "}
+              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                Price Per Day
+              </Typography>
+              <TextField
+                id="filled-basic"
+                select
+                label="Rs"
+                variant="filled"
+                sx={{
+                  marginTop: "1rem",
+                  width: {
+                    xs: "100%",
+                  },
+                }}
+              >
+                {City.map((city) => (
+                  <MenuItem key={city.value} value={city.value}>
+                    {city.value}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Box>
+          </Box>
+
+
+          {/* Kyc */}
         </Container>
       </Box>
     </Box>
