@@ -9,6 +9,9 @@ import {
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import { useState } from "react";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 const Form = () => {
   // Titles values
@@ -510,10 +513,89 @@ const Form = () => {
           </Box>
 
           {/* Date of birth and gender section */}
+          <Box
+            sx={{
+              display: {
+                sm: "flex",
+              },
+              flexDirection: {
+                sm: "column",
+                md: "row",
+              },
+              gap: "20px",
+            }}
+          >
+            <Box
+              sx={{
+                width: {
+                  xs: "100%", // Set to 100% on small devices
+                  sm: "45%", // Set to 45% on larger devices
+                },
+                padding: "30px",
+                boxShadow: 3,
+                borderRadius: "10px",
+                marginTop: {
+                  xs: "1rem",
+                },
+              }}
+            >
+              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                Date of birth
+              </Typography>
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DatePicker
+                  sx={{
+                    marginTop: "1rem",
+                    width: "100%", // Set to 100% width
+                    bgcolor: "#E8E8E8",
+                  }}
+                />
+              </LocalizationProvider>
+            </Box>
+            <Box
+              sx={{
+                width: {
+                  xs: "100%",
+                },
+                padding: "30px",
+                boxShadow: 3,
+                borderRadius: "10px",
+                marginTop: {
+                  xs: "1rem",
+                },
+              }}
+            >
+              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                Titles
+              </Typography>
+              <TextField
+                id="filled-basic"
+                select
+                label="Titles"
+                variant="filled"
+                sx={{
+                  marginTop: "1rem",
+                  width: {
+                    xs: "100%",
+                  },
+                }}
+              >
+                {titles.map((title) => (
+                  <MenuItem key={title.value} value={title.value}>
+                    {title.value}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Box>
+          </Box>
 
           {/*Your Loaction Section  */}
           <Typography
-            sx={{ fontWeight: 600, color: "#1D242E", fontSize: "2rem" }}
+            sx={{
+              fontWeight: 600,
+              color: "#1D242E",
+              fontSize: "2rem",
+            }}
           >
             Your Location
           </Typography>
