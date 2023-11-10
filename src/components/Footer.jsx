@@ -1,5 +1,7 @@
 import { Box, Container, Typography } from "@mui/material";
 import Logo from "../assets/logo.png";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import EmailIcon from "@mui/icons-material/Email";
 const Footer = () => {
   return (
     <Box
@@ -29,19 +31,20 @@ const Footer = () => {
                 xs: "100%",
                 sm: "33%",
               },
+              paddingTop: "20px",
             }}
           >
             <Box>
               <img src={Logo} alt="logo" style={{ width: "80px" }} />
             </Box>
-            <Typography sx={{ fontSize: "1rem", padding: "20px 0px" }}>
+            <Typography sx={{ fontSize: "1.1rem", paddingTop: "30px" }}>
               Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem <br /> Ipsum has been. Lorem Ipsum is simply{" "}
+              industry. Lorem Ipsum has been. Lorem Ipsum is simply{" "}
             </Typography>
-            <Box sx={{ marginBottom: "20px" }}>
+            <Box sx={{ paddingTop: "30px" }}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="140"
+                width="200"
                 height="39"
                 viewBox="0 0 198 39"
                 fill="none"
@@ -112,9 +115,63 @@ const Footer = () => {
                 xs: "100%",
                 sm: "33%",
               },
-              border: "2px solid black",
+              display: "flex",
+              flexDirection: "column",
+              gap: "20px",
             }}
-          ></Box>
+          >
+            {/* For Quick Link and About */}
+            <Box sx={{ display: "flex", gap: "50px" }}>
+              {/* Quick Link */}
+              <Box
+                sx={{ display: "flex", flexDirection: "column", gap: "5px" }}
+              >
+                <Typography variant="h6" sx={{ width: "155px" }}>
+                  Quick Links
+                </Typography>
+                <hr style={{ width: "140px" }} />
+                <Typography>Home</Typography>
+                <Typography>About us</Typography>
+                <Typography>Feature</Typography>
+                <Typography>Contact us</Typography>
+              </Box>
+              {/* About Us */}
+              <Box
+                sx={{ display: "flex", flexDirection: "column", gap: "5px" }}
+              >
+                <Typography variant="h6" sx={{ width: "155px" }}>
+                  About us
+                </Typography>
+                <hr style={{ width: "140px" }} />
+                <Typography>About Chatbot</Typography>
+                <Typography>Contact us</Typography>
+                <Typography>Feature</Typography>
+                <Typography>Careers</Typography>
+              </Box>
+            </Box>
+            {/* For Contacts */}
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "5px",
+                paddingBottom: "20px",
+              }}
+            >
+              <Typography variant="h6" sx={{ width: "155px" }}>
+                Contacts
+              </Typography>
+              <hr style={{ width: "140px" }} />
+              <Typography>
+                <WhatsAppIcon sx={{ paddingRight: "5px" }} />
+                8979951459
+              </Typography>
+              <Typography>
+                <EmailIcon sx={{ paddingRight: "5px" }} />
+                gowildexplorer@gmail.com
+              </Typography>
+            </Box>
+          </Box>
 
           {/* RIght side footer Subscribe */}
           <Box
@@ -127,7 +184,13 @@ const Footer = () => {
             }}
           ></Box>
         </Box>
-        <hr />
+        <hr
+          style={{
+            background:
+              "linear-gradient(270deg, rgba(49, 227, 174, 0.00) 0%, #31E3AE 50.52%, rgba(49, 227, 174, 0.00) 100%);",
+            height: "1px",
+          }}
+        />
         {/* Bottom Footer */}
         <Box
           sx={{
