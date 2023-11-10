@@ -111,11 +111,18 @@ const Form = () => {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            height: "160px",
+            height: {
+              xs: "120px",
+              sm: "160px",
+            },
           }}
         >
           <Typography
-            sx={{ fontSize: "2.5rem", color: "#ffffff", fontWeight: 900 }}
+            sx={{
+              fontSize: { xs: "1.2rem", sm: "2.2rem" },
+              color: "#ffffff",
+              fontWeight: 900,
+            }}
           >
             Partner as Tour Guide
           </Typography>
@@ -319,6 +326,7 @@ const Form = () => {
             display: "flex",
             flexDirection: "column",
             gap: "30px",
+            marginBottom: "50px",
           }}
         >
           <Typography sx={{ fontSize: "1.5rem", paddingTop: "35px" }}>
@@ -373,6 +381,9 @@ const Form = () => {
               }}
             >
               {" "}
+              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                Titles
+              </Typography>
               <TextField
                 id="filled-basic"
                 select
@@ -1143,8 +1154,232 @@ const Form = () => {
             </Box>
           </Box>
 
+          {/* Kyc Documents*/}
+          {/* Addhar Car */}
+          <Box
+            sx={{
+              padding: "30px",
+              boxShadow: 3,
+              borderRadius: "10px",
+            }}
+          >
+            <Typography sx={{ fontWeight: 600, letterSpacing: "1.6px" }}>
+              Adhaar Card
+            </Typography>
+            <div className="flex items-center gap-4">
+              <Button
+                component="label"
+                variant="contained"
+                startIcon={<EditIcon />}
+                sx={{
+                  borderRadius: "4px",
+                  marginTop: "1rem",
+                  bgcolor: "#2ED47A",
+                  color: "#ffffff",
+                  "&:hover": {
+                    bgcolor: "#2ED47A",
+                  },
+                }}
+              >
+                Add a file
+                <Input
+                  type="file"
+                  style={{ display: "none" }}
+                  onChange={handleFileChange}
+                />
+              </Button>
 
-          {/* Kyc */}
+              {selectedFile && (
+                <Typography sx={{ marginTop: "1rem" }}>
+                  {selectedFile.name}
+                </Typography>
+              )}
+            </div>
+          </Box>
+
+          {/* Pan id */}
+          <Box
+            sx={{
+              padding: "30px",
+              boxShadow: 3,
+              borderRadius: "10px",
+            }}
+          >
+            <Typography sx={{ fontWeight: 600, letterSpacing: "1.6px" }}>
+              Pan Id
+            </Typography>
+            <div className="flex items-center gap-4">
+              <Button
+                component="label"
+                variant="contained"
+                startIcon={<EditIcon />}
+                sx={{
+                  borderRadius: "4px",
+                  marginTop: "1rem",
+                  bgcolor: "#2ED47A",
+                  color: "#ffffff",
+                  "&:hover": {
+                    bgcolor: "#2ED47A",
+                  },
+                }}
+              >
+                Add a file
+                <Input
+                  type="file"
+                  style={{ display: "none" }}
+                  onChange={handleFileChange}
+                />
+              </Button>
+
+              {selectedFile && (
+                <Typography sx={{ marginTop: "1rem" }}>
+                  {selectedFile.name}
+                </Typography>
+              )}
+            </div>
+          </Box>
+
+          {/* Other id */}
+
+          <Box
+            sx={{
+              padding: "30px",
+              boxShadow: 3,
+              borderRadius: "10px",
+            }}
+          >
+            <Typography sx={{ fontWeight: 600, letterSpacing: "1.6px" }}>
+              Other Id
+            </Typography>
+            <div className="flex items-center gap-4">
+              <Button
+                component="label"
+                variant="contained"
+                startIcon={<EditIcon />}
+                sx={{
+                  borderRadius: "4px",
+                  marginTop: "1rem",
+                  bgcolor: "#2ED47A",
+                  color: "#ffffff",
+                  "&:hover": {
+                    bgcolor: "#2ED47A",
+                  },
+                }}
+              >
+                Add a file
+                <Input
+                  type="file"
+                  style={{ display: "none" }}
+                  onChange={handleFileChange}
+                />
+              </Button>
+
+              {selectedFile && (
+                <Typography sx={{ marginTop: "1rem" }}>
+                  {selectedFile.name}
+                </Typography>
+              )}
+            </div>
+          </Box>
+
+          {/* Submited by and Phone  */}
+          <Box
+            sx={{
+              display: {
+                sm: "flex",
+              },
+              flexDirection: {
+                xs: "column",
+                sm: "row",
+              },
+              gap: "20px",
+            }}
+          >
+            <Box
+              sx={{
+                width: {
+                  xs: "100%",
+                  sm: "50%",
+                },
+                padding: "30px",
+                boxShadow: 3,
+                borderRadius: "10px",
+                marginTop: {
+                  xs: "1rem",
+                },
+              }}
+            >
+              {" "}
+              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                Submitted By
+              </Typography>
+              <TextField
+                id="filled-basic"
+                select
+                label="Name"
+                variant="filled"
+                sx={{
+                  marginTop: "1rem",
+                  width: {
+                    xs: "100%",
+                  },
+                }}
+              >
+                {City.map((city) => (
+                  <MenuItem key={city.value} value={city.value}>
+                    {city.value}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Box>
+            <Box
+              sx={{
+                width: {
+                  xs: "100%",
+                  sm: "50%",
+                },
+                padding: "30px",
+                boxShadow: 3,
+                borderRadius: "10px",
+                marginTop: {
+                  xs: "1rem",
+                },
+              }}
+            >
+              {" "}
+              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                Submitted No.
+              </Typography>
+              <TextField
+                id="filled-basic"
+                label="Contact"
+                variant="filled"
+                type="number"
+                sx={{
+                  marginTop: "1rem",
+                  width: "100%",
+                }}
+              />
+            </Box>
+          </Box>
+          <Button
+            component="label"
+            variant="contained"
+            sx={{
+              width: "100px",
+              borderRadius: "4px",
+              marginTop: "1rem",
+              bgcolor: "#2ED47A",
+              color: "#ffffff",
+              "&:hover": {
+                bgcolor: "#2ED47A",
+              },
+              fontSize: "0.9rem",
+              fontWeight: 700,
+            }}
+          >
+            Submit
+          </Button>
         </Container>
       </Box>
     </Box>
