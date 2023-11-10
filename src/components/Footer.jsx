@@ -1,4 +1,4 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import Logo from "../assets/logo.png";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import EmailIcon from "@mui/icons-material/Email";
@@ -37,7 +37,15 @@ const Footer = () => {
             <Box>
               <img src={Logo} alt="logo" style={{ width: "80px" }} />
             </Box>
-            <Typography sx={{ fontSize: "1.1rem", paddingTop: "30px" }}>
+            <Typography
+              sx={{
+                fontSize: {
+                  xs: "0.8rem",
+                  sm: "1.1rem",
+                },
+                paddingTop: "30px",
+              }}
+            >
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been. Lorem Ipsum is simply{" "}
             </Typography>
@@ -118,17 +126,27 @@ const Footer = () => {
               display: "flex",
               flexDirection: "column",
               gap: "20px",
+              paddingTop: {
+                xs: "20px",
+                sm: "0px",
+              },
             }}
           >
             {/* For Quick Link and About */}
-            <Box sx={{ display: "flex", gap: "50px" }}>
+            <Box
+              sx={{
+                display: "flex",
+                gap: {
+                  xs: "10px",
+                  sm: "30px",
+                },
+              }}
+            >
               {/* Quick Link */}
               <Box
                 sx={{ display: "flex", flexDirection: "column", gap: "5px" }}
               >
-                <Typography variant="h6" sx={{ width: "155px" }}>
-                  Quick Links
-                </Typography>
+                <Typography variant="h6">Quick Links</Typography>
                 <hr style={{ width: "140px" }} />
                 <Typography>Home</Typography>
                 <Typography>About us</Typography>
@@ -158,9 +176,7 @@ const Footer = () => {
                 paddingBottom: "20px",
               }}
             >
-              <Typography variant="h6" sx={{ width: "155px" }}>
-                Contacts
-              </Typography>
+              <Typography variant="h6">Contacts</Typography>
               <hr style={{ width: "140px" }} />
               <Typography>
                 <WhatsAppIcon sx={{ paddingRight: "5px" }} />
@@ -179,15 +195,79 @@ const Footer = () => {
               width: {
                 xs: "100%",
                 sm: "33%",
-                border: "2px solid black",
               },
+              display: "flex",
+              justifyContent: {
+                xs: "start",
+                sm: "center",
+              },
+              alignItems: "center",
+              paddingLeft: {
+                xs: "0px",
+                sm: "10px",
+              },
+              paddingBottom: "20px",
             }}
-          ></Box>
+          >
+            <Box
+              sx={{
+                height: "220px",
+                width: "80%",
+                background: "rgba(255, 255, 255, 0.3)",
+                borderRadius: "10px",
+                backdropFilter: "blur(10px)",
+                textAlign: "center",
+                padding: "20px",
+              }}
+            >
+              <Typography>Subscribe!</Typography>
+              <Typography sx={{ fontSize: "0.7rem", paddingTop: "20px" }}>
+                Subscribe to our website and stay updated
+              </Typography>
+              <TextField
+                id="outlined-basic"
+                label="Email"
+                variant="outlined"
+                size="small"
+                sx={{
+                  color: "#ffffff",
+                  marginTop: "20px",
+                  "& fieldset": {
+                    borderColor: "#ffffff",
+                  },
+                  "& input": {
+                    color: "#ffffff",
+                  },
+                  "& label": {
+                    color: "#ffffff", // Set the label color
+                  },
+                }}
+                InputLabelProps={{
+                  style: {
+                    color: "#ffffff", // Set the label color for outlined TextField
+                  },
+                }}
+              />
+              <Box sx={{ paddingTop: "20px" }}>
+                <Button
+                  sx={{
+                    border: "1px solid #fff",
+                    width: "100px",
+                    bgcolor: "#fff",
+                    color: "#000",
+                    fontWeight: 400,
+                  }}
+                >
+                  Submit
+                </Button>
+              </Box>
+            </Box>
+          </Box>
         </Box>
         <hr
           style={{
             background:
-              "linear-gradient(270deg, rgba(49, 227, 174, 0.00) 0%, #31E3AE 50.52%, rgba(49, 227, 174, 0.00) 100%);",
+              "linear-gradient(270deg, rgba(49, 227, 174, 0.00) 0%, #31E3AE 50.52%, rgba(49, 227, 174, 0.00) 100%)",
             height: "1px",
           }}
         />
