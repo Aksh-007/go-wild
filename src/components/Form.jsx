@@ -31,12 +31,74 @@ const Form = () => {
     },
   ];
 
+  // for City
+  const City = [
+    {
+      value: "Nagpur",
+      label: "Nagpur",
+    },
+    {
+      value: "Indore",
+      label: "Indore",
+    },
+    {
+      value: "Pune",
+      label: "Pune",
+    },
+    {
+      value: "Mumbai",
+      label: "Mumbai",
+    },
+  ];
+
+  // for State
+  const State = [
+    {
+      value: "India",
+      label: "Maharashtra",
+    },
+    {
+      value: "MadhyaPradesh",
+      label: "MadhyaPradesh",
+    },
+    {
+      value: "UttarPradesh",
+      label: "UttarPradesh",
+    },
+    {
+      value: "Gujrat",
+      label: "Gujrat",
+    },
+  ];
+
+  // for State
+  const Country = [
+    {
+      value: "India",
+      label: "India",
+    },
+    {
+      value: "Australia",
+      label: "Australia",
+    },
+    {
+      value: "Singapore",
+      label: "Singapore",
+    },
+    {
+      value: "Germany",
+      label: "Germany",
+    },
+  ];
+
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     setSelectedFile(file);
   };
+
+  // const [inputField,setInputField]
   return (
     <Box>
       {/* Partner as Tour Guide section */}
@@ -445,6 +507,139 @@ const Form = () => {
                 </Typography>
               )}
             </div>
+          </Box>
+
+          {/* Date of birth and gender section */}
+
+          {/*Your Loaction Section  */}
+          <Typography
+            sx={{ fontWeight: 600, color: "#1D242E", fontSize: "2rem" }}
+          >
+            Your Location
+          </Typography>
+          <Box
+            sx={{
+              display: {
+                sm: "flex",
+              },
+              flexDirection: {
+                sm: "column",
+                md: "row",
+              },
+              gap: "20px",
+            }}
+          >
+            {/* City Box */}
+            <Box
+              sx={{
+                width: {
+                  xs: "100%",
+                },
+                padding: "30px",
+                boxShadow: 3,
+                borderRadius: "10px",
+                marginTop: {
+                  xs: "1rem",
+                },
+              }}
+            >
+              {" "}
+              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                City
+              </Typography>
+              <TextField
+                id="filled-basic"
+                select
+                label="City"
+                variant="filled"
+                sx={{
+                  marginTop: "1rem",
+                  width: {
+                    xs: "100%",
+                  },
+                }}
+              >
+                {City.map((city) => (
+                  <MenuItem key={city.value} value={city.value}>
+                    {city.value}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Box>
+            {/* State Box */}
+            <Box
+              sx={{
+                width: {
+                  xs: "100%",
+                },
+                padding: "30px",
+                boxShadow: 3,
+                borderRadius: "10px",
+                marginTop: {
+                  xs: "1rem",
+                },
+              }}
+            >
+              {" "}
+              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                State
+              </Typography>
+              <TextField
+                id="filled-basic"
+                select
+                label="State"
+                variant="filled"
+                sx={{
+                  marginTop: "1rem",
+                  width: {
+                    xs: "100%",
+                  },
+                }}
+              >
+                {State.map((State) => (
+                  <MenuItem key={State.value} value={State.value}>
+                    {State.value}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Box>
+            {/* country Box */}
+            <Box
+              sx={{
+                width: {
+                  xs: "100%",
+                },
+                padding: "30px",
+                boxShadow: 3,
+                borderRadius: "10px",
+                marginTop: {
+                  xs: "1rem",
+                },
+              }}
+            >
+              {" "}
+              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                Country
+              </Typography>
+              <TextField
+                id="filled-basic"
+                select
+                label="Country"
+                variant="filled"
+                sx={{
+                  marginTop: "1rem",
+                  width: {
+                    xs: "100%",
+                  },
+                }}
+              >
+                {Country.map((Country) => (
+                  <MenuItem key={Country.value} value={Country.value}>
+                    {Country.value}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Box>
           </Box>
         </Container>
       </Box>
