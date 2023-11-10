@@ -5,8 +5,10 @@ import {
   TextField,
   MenuItem,
   Button,
+  Input,
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
+import { useState } from "react";
 
 const Form = () => {
   // Titles values
@@ -28,6 +30,13 @@ const Form = () => {
       label: "Ms",
     },
   ];
+
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setSelectedFile(file);
+  };
   return (
     <Box>
       {/* Partner as Tour Guide section */}
@@ -407,18 +416,35 @@ const Form = () => {
             }}
           >
             <Typography>Submit Your Image</Typography>
-            <Button
-              sx={{
-                borderRadius: "4px ",
-                bgcolor: "#2ED47A",
-                color: "#ffffff",
-                "&:hover:": {
+            <div className="flex items-center gap-4">
+              <Button
+                component="label"
+                variant="contained"
+                startIcon={<EditIcon />}
+                sx={{
+                  borderRadius: "4px",
+                  marginTop: "1rem",
                   bgcolor: "#2ED47A",
-                },
-              }}
-            >
-              <EditIcon /> Add a file
-            </Button>
+                  color: "#ffffff",
+                  "&:hover": {
+                    bgcolor: "#2ED47A",
+                  },
+                }}
+              >
+                Add a file
+                <Input
+                  type="file"
+                  style={{ display: "none" }}
+                  onChange={handleFileChange}
+                />
+              </Button>
+
+              {selectedFile && (
+                <Typography sx={{ marginTop: "1rem" }}>
+                  {selectedFile.name}
+                </Typography>
+              )}
+            </div>
           </Box>
         </Container>
       </Box>
