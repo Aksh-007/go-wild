@@ -212,7 +212,10 @@ const Footer = () => {
             <Box
               sx={{
                 height: "220px",
-                width: "80%",
+                width: {
+                  xs: "100%",
+                  sm: "80%",
+                },
                 background: "rgba(255, 255, 255, 0.3)",
                 borderRadius: "10px",
                 backdropFilter: "blur(10px)",
