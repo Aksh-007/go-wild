@@ -1,26 +1,34 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import StarRateIcon from "@mui/icons-material/StarRate";
+import { useState } from "react";
 const Card = () => {
+  const [isExplored, setIsExplored] = useState(false);
+
+  const handleExplore = () => {
+    isExplored ? setIsExplored(false) : setIsExplored(true);
+  };
   return (
     <Box
       sx={{
-        width: "420px",
+        width: isExplored ? "840px" : "420px",
         // width: "350px",
         borderRadius: "10px",
         boxShadow: "2px 2px 10px 0px rgba(0, 0, 0, 0.10)",
-        padding: "20px",
-        height: "calc(100% - 30px)",
+        padding: isExplored ? "0px" : "20px",
+        minHeight: "calc(465px - 30px)",
+        display: "flex",
+        flexDirection: isExplored ? "row" : "column",
       }}
     >
       {/* Image box */}
-      <Box>
+      <Box sx={{ width: "100%" }}>
         <img
           src="https://media.istockphoto.com/id/996096346/photo/people-crossing-frozen-zanskar-river-chadar-trek.jpg?s=612x612&w=0&k=20&c=6rbego7a1ujqqWsUq1LxR2F8omc4O9St7rsmShsyPlI="
           alt="image"
           style={{
             borderRadius: "10px",
-            height: "230px",
-            width: "100%",
+            width: isExplored ? "50%" : "100%",
+            minHeight: isExplored ? "456px" : "230px",
             zIndex: "0",
           }}
         />
@@ -28,7 +36,7 @@ const Card = () => {
       {/* second Box */}
       <Box
         sx={{
-          display: "flex",
+          display: isExplored ? "none" : "flex",
           justifyContent: "center",
           borderRadius: "10px",
           flexDirection: "column",
@@ -289,6 +297,7 @@ const Card = () => {
               alignItems: "end",
               width: "30%",
             }}
+            onClick={handleExplore}
           >
             <Typography
               sx={{ fontSize: "1rem", fontWeight: 600, color: "#000" }}
@@ -311,6 +320,20 @@ const Card = () => {
             </Box>
           </Box>
         </Box>
+      </Box>
+
+      <Box sx={{ display: isExplored ? "" : "none" }}>
+        <Container
+          sx={{
+            border: "2px solid black",
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Typography>HI</Typography>
+        </Container>
       </Box>
     </Box>
   );
