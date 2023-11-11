@@ -4,10 +4,12 @@ const Card = () => {
   return (
     <Box
       sx={{
-        width: "30%",
+        width: "420px",
+        // width: "350px",
         borderRadius: "10px",
         boxShadow: "2px 2px 10px 0px rgba(0, 0, 0, 0.10)",
         padding: "20px",
+        height: "calc(100% - 30px)",
       }}
     >
       {/* Image box */}

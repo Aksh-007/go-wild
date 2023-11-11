@@ -13,9 +13,43 @@ const HeroSection = () => {
 
       {/* Card Container */}
       <Box>
-        <Container sx={{ padding: "40px 50px" }}>
-          <Card />
-        </Container>
+        {isMobile ? (
+          <Container
+            sx={{
+              display: "flex",
+              overflowX: "auto",
+              "-ms-overflow-style": "scrollbar", // For Microsoft Edge
+              scrollbarWidth: "thin", // For Firefox
+              gap: "50px",
+              padding: "50px 0px",
+            }}
+          >
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+          </Container>
+        ) : (
+          <Container
+            sx={{
+              padding: "40px 50px",
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "50px",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+          </Container>
+        )}
       </Box>
     </>
   );
