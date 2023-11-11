@@ -4,10 +4,9 @@ const Card = () => {
   return (
     <Box
       sx={{
-        width: "500px",
+        width: "30%",
         borderRadius: "10px",
         boxShadow: "2px 2px 10px 0px rgba(0, 0, 0, 0.10)",
-        height: "470px",
         padding: "20px",
       }}
     >
@@ -40,7 +39,7 @@ const Card = () => {
           sx={{
             padding: "20px",
             borderRadius: "10px",
-            width: "420px",
+            width: "90%",
             height: "53px",
             display: "flex",
             alignItems: "center",
@@ -88,7 +87,7 @@ const Card = () => {
         {/* Trek Name and location */}
         <Box
           sx={{
-            width: "430px",
+            width: "100%",
             padding: "10px",
             position: "relative",
             bottom: "30px",
@@ -137,8 +136,178 @@ const Card = () => {
         />
 
         {/*About trek and explore part  */}
-        <Box sx={{ padding: "10px" }}>
-            {/* Activity  */}
+        <Box
+          sx={{
+            padding: "15px 0px",
+            position: "relative",
+            bottom: "30px",
+            display: "flex",
+            gap: "10px",
+            width: "100%",
+            // border: "2px solid black",
+          }}
+        >
+          {/* Sport Activity  */}
+          <Box
+            sx={{
+              display: "flex",
+              width: "70%",
+              flexWrap: "wrap",
+              gap: "5px",
+              //   border: "2px solid black",
+            }}
+          >
+            <Box
+              sx={{
+                borderRadius: "5px",
+                height: "30px",
+                bgcolor: "#A7DBF5",
+                color: "#000",
+                fontWeight: 500,
+                display: "flex",
+                gap: "5px",
+                justifyContent: "center",
+                alignItems: "center",
+                padding: "5px",
+              }}
+            >
+              <Typography>Sunrise</Typography>
+              <Box
+                sx={{
+                  height: "20px",
+                  width: "20px",
+                  borderRadius: "50%",
+                  bgcolor: "#E5E5E5",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Typography sx={{ transform: "rotate(45deg)" }}>+</Typography>
+              </Box>
+            </Box>
+
+            <Box
+              sx={{
+                borderRadius: "5px",
+                height: "30px",
+                bgcolor: "#A7DBF5",
+                fontSize: "0.8rem",
+                color: "#000",
+                fontWeight: 500,
+                display: "flex",
+                gap: "10px",
+                justifyContent: "center",
+                alignItems: "center",
+                padding: "10px",
+              }}
+            >
+              <Typography>Water Sport</Typography>
+              <Box
+                sx={{
+                  height: "20px",
+                  width: "20px",
+                  borderRadius: "50%",
+                  bgcolor: "#E5E5E5",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Typography sx={{ transform: "rotate(45deg)" }}>+</Typography>
+              </Box>
+            </Box>
+
+            <Box
+              sx={{
+                borderRadius: "5px",
+                height: "30px",
+                bgcolor: "#A7DBF5",
+                fontSize: "0.8rem",
+                color: "#000",
+                fontWeight: 500,
+                display: "flex",
+                gap: "10px",
+                justifyContent: "center",
+                alignItems: "center",
+                padding: "10px",
+              }}
+            >
+              <Typography>Sunset</Typography>
+              <Box
+                sx={{
+                  height: "20px",
+                  width: "20px",
+                  borderRadius: "50%",
+                  bgcolor: "#E5E5E5",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Typography sx={{ transform: "rotate(45deg)" }}>+</Typography>
+              </Box>
+            </Box>
+            <Box
+              sx={{
+                borderRadius: "5px",
+                height: "30px",
+                bgcolor: "#A7DBF5",
+                fontSize: "0.8rem",
+                color: "#000",
+                fontWeight: 500,
+                display: "flex",
+                gap: "10px",
+                justifyContent: "center",
+                alignItems: "center",
+                padding: "10px",
+              }}
+            >
+              <Typography>Swimming </Typography>
+              <Box
+                sx={{
+                  height: "20px",
+                  width: "20px",
+                  borderRadius: "50%",
+                  bgcolor: "#E5E5E5",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Typography sx={{ transform: "rotate(45deg)" }}>+</Typography>
+              </Box>
+            </Box>
+          </Box>
+          {/* Explore button box */}
+          <Box
+            sx={{
+              display: "flex",
+              gap: "15px",
+              alignItems: "end",
+              width: "30%",
+            }}
+          >
+            <Typography
+              sx={{ fontSize: "1rem", fontWeight: 600, color: "#000" }}
+            >
+              Explore
+            </Typography>
+            <Box sx={{ marginBottom: "5px" }}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="25"
+                height="16"
+                viewBox="0 0 25 16"
+                fill="none"
+              >
+                <path
+                  d="M24.7071 8.70711C25.0976 8.31658 25.0976 7.68342 24.7071 7.2929L18.3431 0.928934C17.9526 0.538409 17.3195 0.538409 16.9289 0.928934C16.5384 1.31946 16.5384 1.95262 16.9289 2.34315L22.5858 8L16.9289 13.6569C16.5384 14.0474 16.5384 14.6805 16.9289 15.0711C17.3195 15.4616 17.9526 15.4616 18.3431 15.0711L24.7071 8.70711ZM-8.74228e-08 9L24 9L24 7L8.74228e-08 7L-8.74228e-08 9Z"
+                  fill="#06C8F7"
+                />
+              </svg>
+            </Box>
+          </Box>
         </Box>
       </Box>
     </Box>
