@@ -8,6 +8,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
 import Logo from "../assets/logo.png";
+import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <Box>
@@ -26,10 +27,19 @@ const Navbar = () => {
           />
         </Box>
         <Box sx={{ display: "flex", gap: "40px" }}>
-          <Typography>Home</Typography>
-          <Typography>Features</Typography>
-          <Typography>About us</Typography>
-          <Typography>Become a Guide</Typography>
+          <Link to="/">
+            {" "}
+            <Typography>Home</Typography>
+          </Link>
+          <Link>
+            <Typography>Features</Typography>
+          </Link>
+          <Link>
+            <Typography>About us</Typography>
+          </Link>
+          <Link to="/guideForm">
+            <Typography>Become a Guide</Typography>
+          </Link>
         </Box>
         <Box>
           <svg
