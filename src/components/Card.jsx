@@ -18,10 +18,10 @@ const Card = ({ visitorNumber, Rating, trekName, description }) => {
         borderRadius: "10px",
         boxShadow: "2px 2px 10px 0px rgba(0, 0, 0, 0.10)",
         padding: isExplored ? "0px" : "20px",
-        minHeight: "calc(465px - 30px)",
         display: "flex",
         flexDirection: isExplored ? "row" : "column",
         transition: "width 0.5s ease-in-out",
+        minHeight: isExplored ? "460px" : "100%",
       }}
     >
       {/* Image box */}
@@ -47,6 +47,7 @@ const Card = ({ visitorNumber, Rating, trekName, description }) => {
           flexDirection: "column",
           alignItems: "center",
           gap: "5px",
+          marginBottom: "-40px",
         }}
       >
         {/* visitor and rating box */}
