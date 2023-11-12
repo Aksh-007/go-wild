@@ -31,7 +31,7 @@ const HeroSection = () => {
             <Card />
           </Container>
         ) : (
-          <Container
+          <Box
             sx={{
               padding: "40px 50px",
               display: "flex",
@@ -48,7 +48,7 @@ const HeroSection = () => {
             <Card />
             <Card />
             <Card />
-          </Container>
+          </Box>
         )}
       </Box>
     </>
