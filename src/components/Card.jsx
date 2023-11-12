@@ -18,6 +18,7 @@ const Card = () => {
         minHeight: "calc(465px - 30px)",
         display: "flex",
         flexDirection: isExplored ? "row" : "column",
+        transition: "width 0.5s ease-in-out",
       }}
     >
       {/* Image box */}
@@ -27,7 +28,7 @@ const Card = () => {
           alt="image"
           style={{
             borderRadius: "10px",
-            width: isExplored ? "50%" : "100%",
+            width: isExplored ? "100%" : "100%",
             minHeight: isExplored ? "456px" : "230px",
             zIndex: "0",
           }}
@@ -271,6 +272,7 @@ const Card = () => {
                 justifyContent: "center",
                 alignItems: "center",
                 padding: "10px",
+                cursor: "pointer",
               }}
             >
               <Typography>Swimming </Typography>
@@ -322,19 +324,11 @@ const Card = () => {
         </Box>
       </Box>
 
-      <Box sx={{ display: isExplored ? "" : "none" }}>
-        <Container
-          sx={{
-            border: "2px solid black",
-            width: "100%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Typography>HI</Typography>
-        </Container>
+      {/* After click description open */}
+      <Box sx={{ border: "2px solid black", width: "100%" }}>
+        <Container></Container>
       </Box>
+    
     </Box>
   );
 };
