@@ -3,7 +3,14 @@ import { Box, Container, Typography } from "@mui/material";
 import StarRateIcon from "@mui/icons-material/StarRate";
 import { useState } from "react";
 
-const Card = ({ visitorNumber, Rating, trekName, description }) => {
+const Card = ({
+  visitorNumber,
+  Rating,
+  trekName,
+  description,
+  Location,
+  image,
+}) => {
   const [isExplored, setIsExplored] = useState(false);
 
   const handleExplore = () => {
@@ -27,7 +34,7 @@ const Card = ({ visitorNumber, Rating, trekName, description }) => {
       {/* Image box */}
       <Box sx={{ width: "100%", minHeight: "100%" }}>
         <img
-          src="https://media.istockphoto.com/id/996096346/photo/people-crossing-frozen-zanskar-river-chadar-trek.jpg?s=612x612&w=0&k=20&c=6rbego7a1ujqqWsUq1LxR2F8omc4O9St7rsmShsyPlI="
+          src={image}
           alt="image"
           style={{
             borderRadius: "10px",
@@ -141,7 +148,7 @@ const Card = ({ visitorNumber, Rating, trekName, description }) => {
               <Typography
                 sx={{ color: "#A9A9A9", fontSize: "1rem", fontWeight: 400 }}
               >
-                Leh Ladakh
+                {Location}
               </Typography>
             </Box>
           </Box>
