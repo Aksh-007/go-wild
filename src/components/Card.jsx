@@ -1,7 +1,9 @@
+/* eslint-disable react/prop-types */
 import { Box, Container, Typography } from "@mui/material";
 import StarRateIcon from "@mui/icons-material/StarRate";
 import { useState } from "react";
-const Card = () => {
+
+const Card = ({ visitorNumber, Rating, trekName, description }) => {
   const [isExplored, setIsExplored] = useState(false);
 
   const handleExplore = () => {
@@ -85,15 +87,22 @@ const Card = () => {
               />
             </svg>
             {/* Visitor Count */}
-            <Box sx={{ display: "flex", gap: "10px" }}>
-              <Typography sx={{ paddingTop: "10px" }}>235</Typography>
+            <Box
+              sx={{
+                display: "flex",
+                gap: "5px",
+                color: "#A9A9A9",
+                paddingLeft: "5px",
+              }}
+            >
+              <Typography>{visitorNumber}</Typography>
               <Typography>visitors</Typography>
             </Box>
           </Box>
 
-          <Box sx={{ display: "flex", gap: "5px" }}>
+          <Box sx={{ display: "flex", gap: "2px" }}>
             <StarRateIcon sx={{ color: "#FCC534" }} />
-            <Typography>4.4</Typography>
+            <Typography>{Rating}</Typography>
           </Box>
         </Box>
 
@@ -109,7 +118,7 @@ const Card = () => {
           <Typography
             sx={{ color: "#262626", fontSize: "1rem", fontWeight: 600 }}
           >
-            Chadar Trek
+            {trekName}
           </Typography>
           {/* loaction box */}
           <Box sx={{ paddingTop: "8px" }}>
@@ -426,9 +435,7 @@ const Card = () => {
                   lineHeight: "180%",
                 }}
               >
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry&apos;s standard
-                dummy text ever since the 1500s, when an unknown.
+                {description}
               </Typography>
 
               {/* provided service */}

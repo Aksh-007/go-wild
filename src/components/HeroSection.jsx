@@ -41,13 +41,20 @@ const HeroSection = () => {
               alignItems: "center",
             }}
           >
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            <Card
+              visitorNumber={250}
+              Rating={4.1}
+              trekName={"Chadar Trek"}
+              description={
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis iusto voluptate veniam earum! Esse veritatis id officiis vel, quibusdam animi."
+              }
+            />
+
+            <Card visitorNumber={250} Rating={4.1} trekName={"Chadar Trek"} />
+            <Card visitorNumber={250} Rating={4.1} trekName={"Chadar Trek"} />
+            <Card visitorNumber={250} Rating={4.1} trekName={"Chadar Trek"} />
+            <Card visitorNumber={250} Rating={4.1} trekName={"Chadar Trek"} />
+            <Card visitorNumber={250} Rating={4.1} trekName={"Chadar Trek"} />
           </Box>
         )}
       </Box>
