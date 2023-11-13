@@ -13,11 +13,13 @@ const Navbar = () => {
       >
         {/* Logo  */}
         <Box>
-          <img
-            src={Logo}
-            alt="logo"
-            style={{ height: "60px", padding: "2px" }}
-          />
+          <Link to="/">
+            <img
+              src={Logo}
+              alt="logo"
+              style={{ height: "60px", padding: "2px" }}
+            />
+          </Link>
         </Box>
 
         {/* home and social media icon */}
