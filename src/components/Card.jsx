@@ -21,7 +21,7 @@ const Card = ({
       sx={{
         // width: isExplored ? "840px" : "350px",
         // width: isExplored ? "840px" : "30.9%",
-        width: isExplored ? "840px" : "410px",
+        width: isExplored ? "840px" : "370px",
         borderRadius: "10px",
         boxShadow: "2px 2px 10px 0px rgba(0, 0, 0, 0.10)",
         padding: isExplored ? "0px" : "20px",
