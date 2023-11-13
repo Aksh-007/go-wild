@@ -14,14 +14,18 @@ const HeroSection = () => {
       {/* Card Container */}
       <Box>
         {isMobile ? (
-          <Container
+          <Box
             sx={{
               display: "flex",
               overflowX: "auto",
               "-ms-overflow-style": "scrollbar", // For Microsoft Edge
               scrollbarWidth: "thin", // For Firefox
-              gap: "50px",
+              gap: "30px",
               padding: "50px 0px",
+              width: "100%", // Set a specific width or use "100vw" for full viewport width
+              // Add the following styles for smoother scrolling on touch devices
+              WebkitOverflowScrolling: "touch",
+              overflowScrolling: "touch",
             }}
           >
             <Card />
@@ -29,7 +33,7 @@ const HeroSection = () => {
             <Card />
             <Card />
             <Card />
-          </Container>
+          </Box>
         ) : (
           <Box
             sx={{

@@ -40,7 +40,7 @@ const Card = ({
             borderRadius: "10px",
             width: isExplored ? "100%" : "100%",
             // minHeight: isExplored ? "456px" : "230px",
-            minHeight: isExplored ? "100%" : "230px",
+            height: isExplored ? "100%" : "230px",
             zIndex: "0",
           }}
         />
