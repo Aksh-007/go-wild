@@ -1,5 +1,6 @@
 import { Box, Container, Typography, Button } from "@mui/material";
 import rightImage from "../../assets/right-image.png";
+import { Link } from "react-router-dom";
 const HeroMobile = () => {
   return (
     <Box
@@ -64,7 +65,7 @@ const HeroMobile = () => {
             boxShadow: "3px 3px 1px rgba(0, 0, 0, 0.1)",
           }}
         >
-          Explore Now
+          <Link to="/guideform">Explore Now</Link>
         </Button>
         <Box sx={{}}>
           <svg
