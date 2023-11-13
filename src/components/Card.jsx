@@ -28,11 +28,19 @@ const Card = ({
         display: "flex",
         flexDirection: isExplored ? "row" : "column",
         transition: "width 0.7s ease-in-out",
-        minHeight: isExplored ? "460px" : "100%",
+        // minHeight: isExplored ? "460px" : "100%",
+        minHeight: isExplored ? "70%" : "100%",
       }}
     >
       {/* Image box */}
-      <Box sx={{ width: "100%", minHeight: "100%" }}>
+      <Box
+        sx={{
+          width: "100%",
+          minHeight: {
+            xs: "20vh",
+          },
+        }}
+      >
         <img
           src={image}
           alt="image"
@@ -55,6 +63,10 @@ const Card = ({
           alignItems: "center",
           gap: "5px",
           marginBottom: "-40px",
+          // marginBottom: {
+          //   xs: "-400px",
+          //   md: "-40px",
+          // },
         }}
       >
         {/* visitor and rating box */}
