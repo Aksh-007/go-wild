@@ -1,4 +1,4 @@
-import { useMediaQuery, useTheme, Box, Container } from "@mui/material";
+import { useMediaQuery, useTheme, Box } from "@mui/material";
 import HeroDesktop from "./body/HeroDesktop.jsx";
 import HeroMobile from "./body/HeroMobile.jsx";
 import Card from "./Card.jsx";
@@ -16,23 +16,79 @@ const HeroSection = () => {
         {isMobile ? (
           <Box
             sx={{
+              marginTop: "500px",
               display: "flex",
               overflowX: "auto",
-              "-ms-overflow-style": "scrollbar", // For Microsoft Edge
-              scrollbarWidth: "thin", // For Firefox
+              "-ms-overflow-style": "scrollbar",
+              scrollbarWidth: "thin",
               gap: "30px",
               padding: "50px 0px",
-              width: "100%", // Set a specific width or use "100vw" for full viewport width
-              // Add the following styles for smoother scrolling on touch devices
+              width: "100%",
               WebkitOverflowScrolling: "touch",
               overflowScrolling: "touch",
+              minHeight: "80vh",
             }}
           >
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            <Card
+              visitorNumber={250}
+              Location={"Leh Ladakh"}
+              image={
+                "https://media.istockphoto.com/id/996096346/photo/people-crossing-frozen-zanskar-river-chadar-trek.jpg?s=612x612&w=0&k=20&c=6rbego7a1ujqqWsUq1LxR2F8omc4O9St7rsmShsyPlI="
+              }
+              Rating={4.1}
+              trekName={"Chadar Trek"}
+              description={
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis iusto voluptate veniam earum! Esse veritatis id officiis vel, quibusdam animi."
+              }
+            />
+            <Card
+              visitorNumber={250}
+              Location={"Leh Ladakh"}
+              image={
+                "https://media.istockphoto.com/id/996096346/photo/people-crossing-frozen-zanskar-river-chadar-trek.jpg?s=612x612&w=0&k=20&c=6rbego7a1ujqqWsUq1LxR2F8omc4O9St7rsmShsyPlI="
+              }
+              Rating={4.1}
+              trekName={"Chadar Trek"}
+              description={
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis iusto voluptate veniam earum! Esse veritatis id officiis vel, quibusdam animi."
+              }
+            />
+            <Card
+              visitorNumber={250}
+              Location={"Leh Ladakh"}
+              image={
+                "https://media.istockphoto.com/id/996096346/photo/people-crossing-frozen-zanskar-river-chadar-trek.jpg?s=612x612&w=0&k=20&c=6rbego7a1ujqqWsUq1LxR2F8omc4O9St7rsmShsyPlI="
+              }
+              Rating={4.1}
+              trekName={"Chadar Trek"}
+              description={
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis iusto voluptate veniam earum! Esse veritatis id officiis vel, quibusdam animi."
+              }
+            />
+            <Card
+              visitorNumber={250}
+              Location={"Leh Ladakh"}
+              image={
+                "https://media.istockphoto.com/id/996096346/photo/people-crossing-frozen-zanskar-river-chadar-trek.jpg?s=612x612&w=0&k=20&c=6rbego7a1ujqqWsUq1LxR2F8omc4O9St7rsmShsyPlI="
+              }
+              Rating={4.1}
+              trekName={"Chadar Trek"}
+              description={
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis iusto voluptate veniam earum! Esse veritatis id officiis vel, quibusdam animi."
+              }
+            />
+            <Card
+              visitorNumber={250}
+              Location={"Leh Ladakh"}
+              image={
+                "https://media.istockphoto.com/id/996096346/photo/people-crossing-frozen-zanskar-river-chadar-trek.jpg?s=612x612&w=0&k=20&c=6rbego7a1ujqqWsUq1LxR2F8omc4O9St7rsmShsyPlI="
+              }
+              Rating={4.1}
+              trekName={"Chadar Trek"}
+              description={
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis iusto voluptate veniam earum! Esse veritatis id officiis vel, quibusdam animi."
+              }
+            />
           </Box>
         ) : (
           <Box
