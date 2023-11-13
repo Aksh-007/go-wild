@@ -22,7 +22,7 @@ const Card = ({
         // width: isExplored ? "840px" : "350px",
         // width: isExplored ? "840px" : "30%",
         // width: isExplored ? "840px" : "420px",
-        width: isExplored ? "840px" : "380px",
+        width: isExplored ? "840px" : "350px",
         borderRadius: "10px",
         boxShadow: "2px 2px 10px 0px rgba(0, 0, 0, 0.10)",
         padding: isExplored ? "0px" : "20px",
