@@ -5,7 +5,7 @@ const HeroMobile = () => {
     <Box
       sx={{
         backgroundColor: "#31E3AE",
-        height: "78vh",
+        minHeight: "78vh",
         backgroundImage: "../../assets/right-image.png",
       }}
     >
@@ -19,12 +19,9 @@ const HeroMobile = () => {
         <Typography
           variant="h1"
           sx={{
-            fontSize: {
-              sm: "2rem",
-              md: "2rem",
-            },
             fontWeight: "bold",
             marginTop: "50px",
+            fontSize: "2rem",
           }}
         >
           Welcome to GoWild!

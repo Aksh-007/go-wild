@@ -4,7 +4,7 @@ import HeroMobile from "./body/HeroMobile.jsx";
 import Card from "./Card.jsx";
 const HeroSection = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
   return (
     <>
       <Box sx={{ bgcolor: "#31E3AE" }}>
@@ -16,13 +16,12 @@ const HeroSection = () => {
         {isMobile ? (
           <Box
             sx={{
-              marginTop: "500px",
               display: "flex",
               overflowX: "auto",
               "-ms-overflow-style": "scrollbar",
               scrollbarWidth: "thin",
               gap: "30px",
-              padding: "50px 0px",
+              padding: "50px 20px",
               width: "100%",
               WebkitOverflowScrolling: "touch",
               overflowScrolling: "touch",
