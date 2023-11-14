@@ -10,7 +10,7 @@ const Navbar = () => {
           justifyContent: "space-between",
           alignItems: "center",
           padding: {
-            xs: "0px 15px",
+            xs: "0px 20px",
             md: "0px 150px",
           },
         }}
@@ -49,7 +49,13 @@ const Navbar = () => {
           </Link>
         </Box>
         {/* </Box> */}
-        <Box>
+        <Box
+          sx={{
+            display: { xs: "none", md: "flex" },
+            gap: "40px",
+            alignItems: "center",
+          }}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="198"
