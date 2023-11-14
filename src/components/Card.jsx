@@ -328,6 +328,7 @@ const Card = ({
               gap: "15px",
               alignItems: "end",
               width: "30%",
+              cursor: "pointer",
             }}
             onClick={handleExplore}
           >
@@ -741,6 +742,7 @@ const Card = ({
                     gap: "15px",
                     alignItems: "end",
                     width: "20%",
+                    cursor: "pointer",
                   }}
                   onClick={handleExplore}
                 >
