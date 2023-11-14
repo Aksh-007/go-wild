@@ -26,7 +26,7 @@ const Card = ({
         padding: isExplored ? "0px" : "20px",
         display: "flex",
         flexDirection: isExplored ? "row" : "column",
-        transition: "width 0.7s ease-in-out",
+        transition: "width 0.5s ease-in-out",
         // minHeight: isExplored ? "460px" : "100%",
         minHeight: isExplored ? "70%" : "100%",
       }}
