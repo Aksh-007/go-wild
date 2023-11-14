@@ -4,12 +4,15 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <Box>
-      <Container
+      <Box
         sx={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          border: "2px solid black",
+          padding: {
+            xs: "0px 15px",
+            md: "0px 150px",
+          },
         }}
       >
         {/* Logo  */}
@@ -140,7 +143,7 @@ const Navbar = () => {
             />
           </svg>
         </Box>
-      </Container>
+      </Box>
     </Box>
   );
 };
