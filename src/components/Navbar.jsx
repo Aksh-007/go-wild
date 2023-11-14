@@ -10,8 +10,8 @@ const Navbar = () => {
           justifyContent: "space-between",
           alignItems: "center",
           padding: {
-            xs: "0px 20px",
-            md: "0px 150px",
+            xs: "10px 20px",
+            md: "10px 150px",
           },
         }}
       >
@@ -36,16 +36,16 @@ const Navbar = () => {
         >
           <Link to="/">
             {" "}
-            <Typography>Home</Typography>
+            <Typography sx={{ fontSize: "1.3rem" }}>Home</Typography>
           </Link>
           <Link>
-            <Typography>Features</Typography>
+            <Typography sx={{ fontSize: "1.3rem" }}>Features</Typography>
           </Link>
           <Link>
-            <Typography>About us</Typography>
+            <Typography sx={{ fontSize: "1.3rem" }}>About us</Typography>
           </Link>
           <Link to="/guideForm">
-            <Typography>Become a Guide</Typography>
+            <Typography sx={{ fontSize: "1.3rem" }}>Become a Guide</Typography>
           </Link>
         </Box>
         {/* </Box> */}
