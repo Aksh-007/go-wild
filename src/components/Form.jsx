@@ -12,6 +12,11 @@ import { useState } from "react";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
 
 const Form = () => {
   // Titles values
@@ -57,7 +62,7 @@ const Form = () => {
   // for State
   const State = [
     {
-      value: "India",
+      value: "Maharashtra",
       label: "Maharashtra",
     },
     {
@@ -94,6 +99,83 @@ const Form = () => {
     },
   ];
 
+  // languages
+  const Languages = [
+    {
+      value: "Hindi",
+      label: "Hindi",
+    },
+    {
+      value: "English",
+      label: "English",
+    },
+    {
+      value: "Marathi",
+      label: "Marathi",
+    },
+  ];
+
+  // Activites
+  const Activites = [
+    {
+      value: "Camping",
+      label: "Camping",
+    },
+    {
+      value: "Treking",
+      label: "Treking",
+    },
+    {
+      value: "Swimming",
+      label: "Swimming",
+    },
+  ];
+
+  // year of Hobbies
+  const Hobbies = [
+    {
+      value: "Reading",
+      label: "Reading",
+    },
+    {
+      value: "Dancing",
+      label: "Dancing",
+    },
+    {
+      value: "Drwaing",
+      label: "Drwaing",
+    },
+  ];
+
+  const [formData, setFormData] = useState({
+    guide_id: "12345678-1234-5678-1234-567812345678",
+    titles: "",
+    first_name: "",
+    last_name: "",
+    bio: "",
+    image: "image",
+    dob: null, // not consoling
+    gender: "male",
+    guide_city: "",
+    guide_state: "",
+    guide_country: "",
+    contact_number: "",
+    whatsapp_number: "",
+    email: "",
+    languages: "", // not consoling
+    activities: "", // not consoling
+    hobbies: "", // not consoling
+    guide_spot_city: "",
+    guide_spot_places: "",
+    experience: "",
+    price_per_day: 0, // in string
+    aadhar_id: "image",
+    pan_id: "image",
+    other_id: "image",
+    submitted_by: "",
+    submitted_name: "", // no field available
+    submitted_phone: "",
+  });
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (event) => {
@@ -101,7 +183,35 @@ const Form = () => {
     setSelectedFile(file);
   };
 
-  // const [inputField,setInputField]
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+
+    if (type === "radio") {
+      // Handle radio buttons separately
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    } else {
+      // Handle text fields
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: type === "checkbox" ? checked : value,
+      }));
+    }
+  };
+
+  // Handle date of birth change
+  // const handleDateOfBirthChange = (date) => {
+  //   setFormData({ ...formData, dateOfBirth: date });
+  // };
+
+  const handleSubmit = (event) => {
+    event.preventDefault(); // Prevents the default form submission behavior
+
+    // Log the form data
+    console.log("Form Data:", formData);
+  };
   return (
     <Box>
       {/* Partner as Tour Guide section */}
@@ -321,1066 +431,1153 @@ const Form = () => {
         </Container>
       </Box>
       <Box>
-        <Container
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "30px",
-            marginBottom: "50px",
-          }}
-        >
-          <Typography sx={{ fontSize: "1.5rem", paddingTop: "35px" }}>
-            &quot;A Privacy Policy is a crucial document that outlines how you
-            collect, use, store, and protect user data in your app. Here&apos;s
-            a general structure for a Privacy Policy, along with what to include
-            in each section Start with an introduction that explains the purpose
-            of the Privacy Policy and its importance. Mention your app&apos;s
-            name and a brief description of what it does. A Privacy Policy is a
-            crucial document that outlines how you collect, use, store, and
-            protect user data in your app. Here&apos;s a general structure for a
-            Privacy Policy, along with what to include in each section Start
-            with an introduction that explains the purpose of the Privacy Policy
-            and its importance. Mention your app&apos;s name and a brief
-            description of what it does.
-          </Typography>
-          <Typography sx={{ fontSize: "2.2rem", fontWeight: "bold" }}>
-            Kindly fill up these details
-          </Typography>
-          <Typography
+        <form onSubmit={handleSubmit}>
+          <Container
             sx={{
-              fontSize: "1.8rem",
-              fontWeight: "bold",
+              display: "flex",
+              flexDirection: "column",
+              gap: "30px",
+              marginBottom: "50px",
             }}
           >
-            Personal Details
-          </Typography>
-          {/* Personal Details */}
-          <Box
-            sx={{
-              display: {
-                sm: "flex",
-              },
-              flexDirection: {
-                sm: "column",
-                md: "row",
-              },
-              gap: "20px",
-            }}
-          >
-            <Box
+            <Typography sx={{ fontSize: "1.5rem", paddingTop: "35px" }}>
+              &quot;A Privacy Policy is a crucial document that outlines how you
+              collect, use, store, and protect user data in your app.
+              Here&apos;s a general structure for a Privacy Policy, along with
+              what to include in each section Start with an introduction that
+              explains the purpose of the Privacy Policy and its importance.
+              Mention your app&apos;s name and a brief description of what it
+              does. A Privacy Policy is a crucial document that outlines how you
+              collect, use, store, and protect user data in your app.
+              Here&apos;s a general structure for a Privacy Policy, along with
+              what to include in each section Start with an introduction that
+              explains the purpose of the Privacy Policy and its importance.
+              Mention your app&apos;s name and a brief description of what it
+              does.
+            </Typography>
+            <Typography sx={{ fontSize: "2.2rem", fontWeight: "bold" }}>
+              Kindly fill up these details
+            </Typography>
+            <Typography
               sx={{
-                width: {
-                  xs: "100%",
-                },
-                padding: "30px",
-                boxShadow: 3,
-                borderRadius: "10px",
-                marginTop: {
-                  xs: "1rem",
-                },
+                fontSize: "1.8rem",
+                fontWeight: "bold",
               }}
             >
-              {" "}
-              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
-                Titles
-              </Typography>
-              <TextField
-                id="filled-basic"
-                select
-                label="Titles"
-                variant="filled"
+              Personal Details
+            </Typography>
+
+            {/* Personal Details */}
+            <Box
+              sx={{
+                display: {
+                  sm: "flex",
+                },
+                flexDirection: {
+                  sm: "column",
+                  md: "row",
+                },
+                gap: "20px",
+              }}
+            >
+              <Box
                 sx={{
-                  marginTop: "1rem",
                   width: {
                     xs: "100%",
+                  },
+                  padding: "30px",
+                  boxShadow: 3,
+                  borderRadius: "10px",
+                  marginTop: {
+                    xs: "1rem",
                   },
                 }}
               >
-                {titles.map((title) => (
-                  <MenuItem key={title.value} value={title.value}>
-                    {title.value}
-                  </MenuItem>
-                ))}
-              </TextField>
-            </Box>
-            <Box
-              sx={{
-                width: {
-                  xs: "100%",
-                },
-                padding: "30px",
-                boxShadow: 3,
-                borderRadius: "10px",
-                marginTop: {
-                  xs: "1rem",
-                },
-              }}
-            >
-              {" "}
-              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
-                First Name
-              </Typography>
-              <TextField
-                id="filled-basic"
-                label="first Name"
-                variant="filled"
-                sx={{
-                  marginTop: "1rem",
-                  width: {
-                    xs: "100%",
-                  },
-                }}
-              />
-            </Box>
-            <Box
-              sx={{
-                width: {
-                  xs: "100%",
-                },
-                padding: "30px",
-                boxShadow: 3,
-                borderRadius: "10px",
-                marginTop: {
-                  xs: "1rem",
-                },
-              }}
-            >
-              {" "}
-              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
-                Last Name
-              </Typography>
-              <TextField
-                id="filled-basic"
-                label="Last Name"
-                variant="filled"
-                sx={{
-                  marginTop: "1rem",
-                  width: {
-                    xs: "100%",
-                  },
-                }}
-              />
-            </Box>
-          </Box>
-
-          {/* Bio container */}
-          <Box
-            sx={{
-              padding: "30px",
-              boxShadow: 3,
-              borderRadius: "10px",
-            }}
-          >
-            <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
-              Bio
-            </Typography>
-            <TextField
-              id="filled-basic"
-              label="Bio"
-              variant="filled"
-              sx={{ marginTop: "1rem", width: "100%" }}
-            />
-          </Box>
-
-          {/* Submit your Image */}
-          <Box
-            sx={{
-              padding: "30px",
-              boxShadow: 3,
-              borderRadius: "10px",
-            }}
-          >
-            <Typography sx={{ fontWeight: 600, letterSpacing: "1.6px" }}>
-              Submit Your Image
-            </Typography>
-            <div className="flex items-center gap-4">
-              <Button
-                component="label"
-                variant="contained"
-                startIcon={<EditIcon />}
-                sx={{
-                  borderRadius: "4px",
-                  marginTop: "1rem",
-                  bgcolor: "#2ED47A",
-                  color: "#ffffff",
-                  "&:hover": {
-                    bgcolor: "#2ED47A",
-                  },
-                }}
-              >
-                Add a file
-                <Input
-                  type="file"
-                  style={{ display: "none" }}
-                  onChange={handleFileChange}
-                />
-              </Button>
-
-              {selectedFile && (
-                <Typography sx={{ marginTop: "1rem" }}>
-                  {selectedFile.name}
+                {" "}
+                <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                  Titles
                 </Typography>
-              )}
-            </div>
-          </Box>
-
-          {/* Date of birth and gender section */}
-          <Box
-            sx={{
-              display: {
-                sm: "flex",
-              },
-              flexDirection: {
-                sm: "column",
-                md: "row",
-              },
-              gap: "20px",
-            }}
-          >
-            <Box
-              sx={{
-                width: {
-                  xs: "100%", // Set to 100% on small devices
-                },
-                padding: "30px",
-                boxShadow: 3,
-                borderRadius: "10px",
-                marginTop: {
-                  xs: "1rem",
-                },
-              }}
-            >
-              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
-                Date of birth
-              </Typography>
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DatePicker
+                <TextField
+                  id="filled-basic"
+                  select
+                  label="Titles"
+                  variant="filled"
+                  required
+                  name="titles"
+                  // value={formData.title}
+                  onChange={handleInputChange}
                   sx={{
                     marginTop: "1rem",
                     width: {
                       xs: "100%",
                     },
-                    bgcolor: "#E8E8E8",
+                  }}
+                >
+                  {titles.map((title) => (
+                    <MenuItem key={title.value} value={title.value}>
+                      {title.value}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              </Box>
+              <Box
+                sx={{
+                  width: {
+                    xs: "100%",
+                  },
+                  padding: "30px",
+                  boxShadow: 3,
+                  borderRadius: "10px",
+                  marginTop: {
+                    xs: "1rem",
+                  },
+                }}
+              >
+                {" "}
+                <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                  First Name
+                </Typography>
+                <TextField
+                  id="filled-basic"
+                  label="first Name"
+                  variant="filled"
+                  required
+                  name="first_name"
+                  onChange={handleInputChange}
+                  sx={{
+                    marginTop: "1rem",
+                    width: {
+                      xs: "100%",
+                    },
                   }}
                 />
-              </LocalizationProvider>
-            </Box>
-            <Box
-              sx={{
-                width: {
-                  xs: "100%",
-                },
-                padding: "30px",
-                boxShadow: 3,
-                borderRadius: "10px",
-                marginTop: {
-                  xs: "1rem",
-                },
-              }}
-            >
-              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
-                Titles
-              </Typography>
-              <TextField
-                id="filled-basic"
-                select
-                label="Titles"
-                variant="filled"
+              </Box>
+              <Box
                 sx={{
-                  marginTop: "1rem",
                   width: {
                     xs: "100%",
                   },
+                  padding: "30px",
+                  boxShadow: 3,
+                  borderRadius: "10px",
+                  marginTop: {
+                    xs: "1rem",
+                  },
                 }}
               >
-                {titles.map((title) => (
-                  <MenuItem key={title.value} value={title.value}>
-                    {title.value}
-                  </MenuItem>
-                ))}
-              </TextField>
+                {" "}
+                <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                  Last Name
+                </Typography>
+                <TextField
+                  id="filled-basic"
+                  label="Last Name"
+                  variant="filled"
+                  required
+                  name="last_name"
+                  onChange={handleInputChange}
+                  sx={{
+                    marginTop: "1rem",
+                    width: {
+                      xs: "100%",
+                    },
+                  }}
+                />
+              </Box>
             </Box>
-          </Box>
 
-          {/*Your location Section  */}
-          <Typography
-            sx={{
-              fontWeight: 600,
-              color: "#1D242E",
-              fontSize: "2rem",
-            }}
-          >
-            Your Location
-          </Typography>
-          <Box
-            sx={{
-              display: {
-                sm: "flex",
-              },
-              flexDirection: {
-                sm: "column",
-                md: "row",
-              },
-              gap: "20px",
-            }}
-          >
-            {/* City Box */}
+            {/* Bio container */}
             <Box
               sx={{
-                width: {
-                  xs: "100%",
-                },
                 padding: "30px",
                 boxShadow: 3,
                 borderRadius: "10px",
-                marginTop: {
-                  xs: "1rem",
-                },
               }}
             >
-              {" "}
               <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
-                City
+                Bio
               </Typography>
               <TextField
                 id="filled-basic"
-                select
-                label="City"
+                label="Bio"
                 variant="filled"
-                sx={{
-                  marginTop: "1rem",
-                  width: {
-                    xs: "100%",
-                  },
-                }}
-              >
-                {City.map((city) => (
-                  <MenuItem key={city.value} value={city.value}>
-                    {city.value}
-                  </MenuItem>
-                ))}
-              </TextField>
-            </Box>
-            {/* State Box */}
-            <Box
-              sx={{
-                width: {
-                  xs: "100%",
-                },
-                padding: "30px",
-                boxShadow: 3,
-                borderRadius: "10px",
-                marginTop: {
-                  xs: "1rem",
-                },
-              }}
-            >
-              {" "}
-              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
-                State
-              </Typography>
-              <TextField
-                id="filled-basic"
-                select
-                label="State"
-                variant="filled"
-                sx={{
-                  marginTop: "1rem",
-                  width: {
-                    xs: "100%",
-                  },
-                }}
-              >
-                {State.map((State) => (
-                  <MenuItem key={State.value} value={State.value}>
-                    {State.value}
-                  </MenuItem>
-                ))}
-              </TextField>
-            </Box>
-            {/* country Box */}
-            <Box
-              sx={{
-                width: {
-                  xs: "100%",
-                },
-                padding: "30px",
-                boxShadow: 3,
-                borderRadius: "10px",
-                marginTop: {
-                  xs: "1rem",
-                },
-              }}
-            >
-              {" "}
-              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
-                Country
-              </Typography>
-              <TextField
-                id="filled-basic"
-                select
-                label="Country"
-                variant="filled"
-                sx={{
-                  marginTop: "1rem",
-                  width: {
-                    xs: "100%",
-                  },
-                }}
-              >
-                {Country.map((Country) => (
-                  <MenuItem key={Country.value} value={Country.value}>
-                    {Country.value}
-                  </MenuItem>
-                ))}
-              </TextField>
-            </Box>
-          </Box>
-
-          {/* Your Contact information */}
-          <Typography
-            sx={{
-              fontWeight: 600,
-              color: "#1D242E",
-              fontSize: {
-                xs: "1.5rem",
-                sm: "2rem",
-              },
-            }}
-          >
-            Your Contact Information
-          </Typography>
-          <Box
-            sx={{
-              display: {
-                sm: "flex",
-              },
-              flexDirection: {
-                xs: "column",
-                sm: "row",
-              },
-              gap: "20px",
-            }}
-          >
-            <Box
-              sx={{
-                width: {
-                  xs: "100%",
-                  sm: "50%",
-                },
-                padding: "30px",
-                boxShadow: 3,
-                borderRadius: "10px",
-                marginTop: {
-                  xs: "1rem",
-                },
-              }}
-            >
-              {" "}
-              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
-                Contact No.
-              </Typography>
-              <TextField
-                id="filled-basic"
-                label="Contact"
-                variant="filled"
-                type="number"
-                sx={{
-                  marginTop: "1rem",
-                  width: "100%",
-                }}
+                required
+                name="bio"
+                onChange={handleInputChange}
+                sx={{ marginTop: "1rem", width: "100%" }}
               />
             </Box>
+
+            {/* Submit your Image */}
             <Box
               sx={{
-                width: {
-                  xs: "100%",
-                  sm: "50%",
-                },
                 padding: "30px",
                 boxShadow: 3,
                 borderRadius: "10px",
-                marginTop: {
-                  xs: "1rem",
-                },
               }}
             >
-              {" "}
-              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
-                Whatsapp No.
+              <Typography sx={{ fontWeight: 600, letterSpacing: "1.6px" }}>
+                Submit Your Image
               </Typography>
-              <TextField
-                id="filled-basic"
-                label="Whatsapp"
-                variant="filled"
-                type="number"
-                sx={{
-                  marginTop: "1rem",
-                  width: "100%",
-                }}
-              />
+              <div className="flex items-center gap-4">
+                <Button
+                  component="label"
+                  required
+                  variant="contained"
+                  startIcon={<EditIcon />}
+                  sx={{
+                    borderRadius: "4px",
+                    marginTop: "1rem",
+                    bgcolor: "#2ED47A",
+                    color: "#ffffff",
+                    "&:hover": {
+                      bgcolor: "#2ED47A",
+                    },
+                  }}
+                >
+                  Add a file
+                  <Input
+                    type="file"
+                    style={{ display: "none" }}
+                    name="image"
+                    onChange={handleInputChange}
+                  />
+                </Button>
+
+                {selectedFile && (
+                  <Typography sx={{ marginTop: "1rem" }}>
+                    {selectedFile.name}
+                  </Typography>
+                )}
+              </div>
             </Box>
-          </Box>
 
-          {/* Email id Field */}
-          <Box
-            sx={{
-              padding: "30px",
-              boxShadow: 3,
-              borderRadius: "10px",
-            }}
-          >
-            <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
-              Email id
-            </Typography>
-            <TextField
-              id="filled-basic"
-              label="user@gmail.com"
-              variant="filled"
-              sx={{ marginTop: "1rem", width: "100%" }}
-            />
-          </Box>
-
-          {/* Additional information */}
-          <Typography
-            sx={{
-              fontWeight: 600,
-              color: "#1D242E",
-              fontSize: {
-                xs: "1.5rem",
-                sm: "2rem",
-              },
-            }}
-          >
-            Additional Information
-          </Typography>
-          {/* language */}
-          <Box
-            sx={{
-              padding: "30px",
-              boxShadow: 3,
-              borderRadius: "10px",
-            }}
-          >
-            <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
-              Languages
-            </Typography>
-            <TextField
-              id="filled-basic"
-              select
-              label="City"
-              variant="filled"
+            {/* Date of birth and gender section */}
+            <Box
               sx={{
-                marginTop: "1rem",
-                width: {
-                  xs: "100%",
+                display: {
+                  sm: "flex",
                 },
+                flexDirection: {
+                  sm: "column",
+                  md: "row",
+                },
+                gap: "20px",
               }}
             >
-              {City.map((city) => (
-                <MenuItem key={city.value} value={city.value}>
-                  {city.value}
-                </MenuItem>
-              ))}
-            </TextField>
-          </Box>
-          {/* Activites */}
-          <Box
-            sx={{
-              padding: "30px",
-              boxShadow: 3,
-              borderRadius: "10px",
-            }}
-          >
-            <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
-              Activites
-            </Typography>
-            <TextField
-              id="filled-basic"
-              select
-              label="City"
-              variant="filled"
-              sx={{
-                marginTop: "1rem",
-                width: {
-                  xs: "100%",
-                },
-              }}
-            >
-              {City.map((city) => (
-                <MenuItem key={city.value} value={city.value}>
-                  {city.value}
-                </MenuItem>
-              ))}
-            </TextField>
-          </Box>
-          {/* Hobbies */}
-          <Box
-            sx={{
-              padding: "30px",
-              boxShadow: 3,
-              borderRadius: "10px",
-            }}
-          >
+              <Box
+                sx={{
+                  width: {
+                    xs: "100%",
+                    md: "30%",
+                  },
+                  padding: "30px",
+                  boxShadow: 3,
+                  borderRadius: "10px",
+                  marginTop: {
+                    xs: "1rem",
+                  },
+                }}
+              >
+                <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                  Date of birth
+                </Typography>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DatePicker
+                    required
+                    name="dob"
+                    onChange={handleFileChange}
+                    sx={{
+                      marginTop: "1rem",
+                      width: {
+                        xs: "100%",
+                      },
+                      bgcolor: "#E8E8E8",
+                    }}
+                  />
+                </LocalizationProvider>
+              </Box>
+              <Box
+                sx={{
+                  width: {
+                    xs: "100%",
+                    md: "70%",
+                  },
+                  padding: "30px",
+                  boxShadow: 3,
+                  borderRadius: "10px",
+                  marginTop: {
+                    xs: "1rem",
+                  },
+                }}
+              >
+                <FormControl>
+                  <FormLabel
+                    sx={{
+                      color: "#000",
+                      fontWeight: 600,
+                      letterSpacing: "2.6px",
+                    }}
+                  >
+                    Gender
+                  </FormLabel>
+                  <RadioGroup
+                    aria-labelledby="demo-row-radio-buttons-group-label"
+                    name="gender"
+                    value={formData.gender}
+                    onChange={handleInputChange}
+                    sx={{
+                      marginTop: "20px",
+                      display: "flex",
+                      flexDirection: "row",
+                      gap: "50px",
+                    }}
+                  >
+                    <FormControlLabel
+                      value="male"
+                      control={<Radio />}
+                      label="Male"
+                    />
+                    <FormControlLabel
+                      value="female"
+                      control={<Radio />}
+                      label="Female"
+                    />
+
+                    <FormControlLabel
+                      value="other"
+                      control={<Radio />}
+                      label="Other"
+                    />
+                  </RadioGroup>
+                </FormControl>
+              </Box>
+            </Box>
+
+            {/*Your location Section  */}
             <Typography
               sx={{
-                color: "#000",
-                fontSize: "1.2rem",
                 fontWeight: 600,
-                letterSpacing: "2.6px",
+                color: "#1D242E",
+                fontSize: "2rem",
               }}
             >
-              Hobbies
+              Your Location
             </Typography>
-            <TextField
-              id="filled-basic"
-              select
-              label="City"
-              variant="filled"
-              sx={{
-                marginTop: "1rem",
-                width: {
-                  xs: "100%",
-                },
-              }}
-            >
-              {City.map((city) => (
-                <MenuItem key={city.value} value={city.value}>
-                  {city.value}
-                </MenuItem>
-              ))}
-            </TextField>
-          </Box>
-
-          {/* Guide Spot */}
-          <Typography
-            sx={{
-              fontWeight: 600,
-              color: "#1D242E",
-              fontSize: {
-                xs: "1.5rem",
-                sm: "2rem",
-              },
-            }}
-          >
-            Guide Spot
-          </Typography>
-          <Box
-            sx={{
-              display: {
-                sm: "flex",
-              },
-              flexDirection: {
-                xs: "column",
-                sm: "row",
-              },
-              gap: "20px",
-            }}
-          >
             <Box
               sx={{
-                width: {
-                  xs: "100%",
-                  sm: "50%",
+                display: {
+                  sm: "flex",
                 },
-                padding: "30px",
-                boxShadow: 3,
-                borderRadius: "10px",
-                marginTop: {
-                  xs: "1rem",
+                flexDirection: {
+                  sm: "column",
+                  md: "row",
                 },
+                gap: "20px",
               }}
             >
-              {" "}
-              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
-                City
-              </Typography>
-              <TextField
-                id="filled-basic"
-                select
-                label="City"
-                variant="filled"
+              {/* City Box */}
+              <Box
                 sx={{
-                  marginTop: "1rem",
                   width: {
                     xs: "100%",
                   },
-                }}
-              >
-                {City.map((city) => (
-                  <MenuItem key={city.value} value={city.value}>
-                    {city.value}
-                  </MenuItem>
-                ))}
-              </TextField>
-            </Box>
-            <Box
-              sx={{
-                width: {
-                  xs: "100%",
-                  sm: "50%",
-                },
-                padding: "30px",
-                boxShadow: 3,
-                borderRadius: "10px",
-                marginTop: {
-                  xs: "1rem",
-                },
-              }}
-            >
-              {" "}
-              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
-                Places
-              </Typography>
-              <TextField
-                id="filled-basic"
-                select
-                label="Places"
-                variant="filled"
-                sx={{
-                  marginTop: "1rem",
-                  width: {
-                    xs: "100%",
+                  padding: "30px",
+                  boxShadow: 3,
+                  borderRadius: "10px",
+                  marginTop: {
+                    xs: "1rem",
                   },
                 }}
               >
-                {City.map((city) => (
-                  <MenuItem key={city.value} value={city.value}>
-                    {city.value}
-                  </MenuItem>
-                ))}
-              </TextField>
-            </Box>
-          </Box>
-
-          {/* Experience & Price*/}
-          <Typography
-            sx={{
-              fontWeight: 600,
-              color: "#1D242E",
-              fontSize: {
-                xs: "1.5rem",
-                sm: "2rem",
-              },
-            }}
-          >
-            Experience & price
-          </Typography>
-          <Box
-            sx={{
-              display: {
-                sm: "flex",
-              },
-              flexDirection: {
-                xs: "column",
-                sm: "row",
-              },
-              gap: "20px",
-            }}
-          >
-            <Box
-              sx={{
-                width: {
-                  xs: "100%",
-                  sm: "50%",
-                },
-                padding: "30px",
-                boxShadow: 3,
-                borderRadius: "10px",
-                marginTop: {
-                  xs: "1rem",
-                },
-              }}
-            >
-              {" "}
-              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
-                Years of Experience
-              </Typography>
-              <TextField
-                id="filled-basic"
-                select
-                label="Select year"
-                variant="filled"
-                sx={{
-                  marginTop: "1rem",
-                  width: {
-                    xs: "100%",
-                  },
-                }}
-              >
-                {City.map((city) => (
-                  <MenuItem key={city.value} value={city.value}>
-                    {city.value}
-                  </MenuItem>
-                ))}
-              </TextField>
-            </Box>
-            <Box
-              sx={{
-                width: {
-                  xs: "100%",
-                  sm: "50%",
-                },
-                padding: "30px",
-                boxShadow: 3,
-                borderRadius: "10px",
-                marginTop: {
-                  xs: "1rem",
-                },
-              }}
-            >
-              {" "}
-              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
-                Price Per Day
-              </Typography>
-              <TextField
-                id="filled-basic"
-                select
-                label="Rs"
-                variant="filled"
-                sx={{
-                  marginTop: "1rem",
-                  width: {
-                    xs: "100%",
-                  },
-                }}
-              >
-                {City.map((city) => (
-                  <MenuItem key={city.value} value={city.value}>
-                    {city.value}
-                  </MenuItem>
-                ))}
-              </TextField>
-            </Box>
-          </Box>
-
-          {/* Kyc Documents*/}
-          {/* Addhar Car */}
-          <Box
-            sx={{
-              padding: "30px",
-              boxShadow: 3,
-              borderRadius: "10px",
-            }}
-          >
-            <Typography sx={{ fontWeight: 600, letterSpacing: "1.6px" }}>
-              Adhaar Card
-            </Typography>
-            <div className="flex items-center gap-4">
-              <Button
-                component="label"
-                variant="contained"
-                startIcon={<EditIcon />}
-                sx={{
-                  borderRadius: "4px",
-                  marginTop: "1rem",
-                  bgcolor: "#2ED47A",
-                  color: "#ffffff",
-                  "&:hover": {
-                    bgcolor: "#2ED47A",
-                  },
-                }}
-              >
-                Add a file
-                <Input
-                  type="file"
-                  style={{ display: "none" }}
-                  onChange={handleFileChange}
-                />
-              </Button>
-
-              {selectedFile && (
-                <Typography sx={{ marginTop: "1rem" }}>
-                  {selectedFile.name}
+                {" "}
+                <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                  City
                 </Typography>
-              )}
-            </div>
-          </Box>
-
-          {/* Pan id */}
-          <Box
-            sx={{
-              padding: "30px",
-              boxShadow: 3,
-              borderRadius: "10px",
-            }}
-          >
-            <Typography sx={{ fontWeight: 600, letterSpacing: "1.6px" }}>
-              Pan Id
-            </Typography>
-            <div className="flex items-center gap-4">
-              <Button
-                component="label"
-                variant="contained"
-                startIcon={<EditIcon />}
+                <TextField
+                  id="filled-basic"
+                  select
+                  label="City"
+                  required
+                  variant="filled"
+                  name="guide_city"
+                  onChange={handleInputChange}
+                  sx={{
+                    marginTop: "1rem",
+                    width: {
+                      xs: "100%",
+                    },
+                  }}
+                >
+                  {City.map((city) => (
+                    <MenuItem key={city.value} value={city.value}>
+                      {city.value}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              </Box>
+              {/* State Box */}
+              <Box
                 sx={{
-                  borderRadius: "4px",
-                  marginTop: "1rem",
-                  bgcolor: "#2ED47A",
-                  color: "#ffffff",
-                  "&:hover": {
-                    bgcolor: "#2ED47A",
-                  },
-                }}
-              >
-                Add a file
-                <Input
-                  type="file"
-                  style={{ display: "none" }}
-                  onChange={handleFileChange}
-                />
-              </Button>
-
-              {selectedFile && (
-                <Typography sx={{ marginTop: "1rem" }}>
-                  {selectedFile.name}
-                </Typography>
-              )}
-            </div>
-          </Box>
-
-          {/* Other id */}
-
-          <Box
-            sx={{
-              padding: "30px",
-              boxShadow: 3,
-              borderRadius: "10px",
-            }}
-          >
-            <Typography sx={{ fontWeight: 600, letterSpacing: "1.6px" }}>
-              Other Id
-            </Typography>
-            <div className="flex items-center gap-4">
-              <Button
-                component="label"
-                variant="contained"
-                startIcon={<EditIcon />}
-                sx={{
-                  borderRadius: "4px",
-                  marginTop: "1rem",
-                  bgcolor: "#2ED47A",
-                  color: "#ffffff",
-                  "&:hover": {
-                    bgcolor: "#2ED47A",
-                  },
-                }}
-              >
-                Add a file
-                <Input
-                  type="file"
-                  style={{ display: "none" }}
-                  onChange={handleFileChange}
-                />
-              </Button>
-
-              {selectedFile && (
-                <Typography sx={{ marginTop: "1rem" }}>
-                  {selectedFile.name}
-                </Typography>
-              )}
-            </div>
-          </Box>
-
-          {/* Submited by and Phone  */}
-          <Box
-            sx={{
-              display: {
-                sm: "flex",
-              },
-              flexDirection: {
-                xs: "column",
-                sm: "row",
-              },
-              gap: "20px",
-            }}
-          >
-            <Box
-              sx={{
-                width: {
-                  xs: "100%",
-                  sm: "50%",
-                },
-                padding: "30px",
-                boxShadow: 3,
-                borderRadius: "10px",
-                marginTop: {
-                  xs: "1rem",
-                },
-              }}
-            >
-              {" "}
-              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
-                Submitted By
-              </Typography>
-              <TextField
-                id="filled-basic"
-                select
-                label="Name"
-                variant="filled"
-                sx={{
-                  marginTop: "1rem",
                   width: {
                     xs: "100%",
                   },
+                  padding: "30px",
+                  boxShadow: 3,
+                  borderRadius: "10px",
+                  marginTop: {
+                    xs: "1rem",
+                  },
                 }}
               >
-                {City.map((city) => (
-                  <MenuItem key={city.value} value={city.value}>
-                    {city.value}
-                  </MenuItem>
-                ))}
-              </TextField>
+                {" "}
+                <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                  State
+                </Typography>
+                <TextField
+                  id="filled-basic"
+                  select
+                  label="State"
+                  variant="filled"
+                  required
+                  name="guide_state"
+                  onChange={handleInputChange}
+                  sx={{
+                    marginTop: "1rem",
+                    width: {
+                      xs: "100%",
+                    },
+                  }}
+                >
+                  {State.map((State) => (
+                    <MenuItem key={State.value} value={State.value}>
+                      {State.value}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              </Box>
+              {/* country Box */}
+              <Box
+                sx={{
+                  width: {
+                    xs: "100%",
+                  },
+                  padding: "30px",
+                  boxShadow: 3,
+                  borderRadius: "10px",
+                  marginTop: {
+                    xs: "1rem",
+                  },
+                }}
+              >
+                {" "}
+                <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                  Country
+                </Typography>
+                <TextField
+                  id="filled-basic"
+                  select
+                  label="Country"
+                  variant="filled"
+                  name="guide_country"
+                  onChange={handleInputChange}
+                  required
+                  sx={{
+                    marginTop: "1rem",
+                    width: {
+                      xs: "100%",
+                    },
+                  }}
+                >
+                  {Country.map((Country) => (
+                    <MenuItem key={Country.value} value={Country.value}>
+                      {Country.value}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              </Box>
             </Box>
-            <Box
+
+            {/* Your Contact information */}
+            <Typography
               sx={{
-                width: {
-                  xs: "100%",
-                  sm: "50%",
-                },
-                padding: "30px",
-                boxShadow: 3,
-                borderRadius: "10px",
-                marginTop: {
-                  xs: "1rem",
+                fontWeight: 600,
+                color: "#1D242E",
+                fontSize: {
+                  xs: "1.5rem",
+                  sm: "2rem",
                 },
               }}
             >
-              {" "}
+              Your Contact Information
+            </Typography>
+            <Box
+              sx={{
+                display: {
+                  sm: "flex",
+                },
+                flexDirection: {
+                  xs: "column",
+                  sm: "row",
+                },
+                gap: "20px",
+              }}
+            >
+              <Box
+                sx={{
+                  width: {
+                    xs: "100%",
+                    sm: "50%",
+                  },
+                  padding: "30px",
+                  boxShadow: 3,
+                  borderRadius: "10px",
+                  marginTop: {
+                    xs: "1rem",
+                  },
+                }}
+              >
+                {" "}
+                <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                  Contact No.
+                </Typography>
+                <TextField
+                  id="filled-basic"
+                  label="Contact"
+                  variant="filled"
+                  required
+                  name="contact_number"
+                  onChange={handleInputChange}
+                  type="number"
+                  sx={{
+                    marginTop: "1rem",
+                    width: "100%",
+                  }}
+                />
+              </Box>
+              <Box
+                sx={{
+                  width: {
+                    xs: "100%",
+                    sm: "50%",
+                  },
+                  padding: "30px",
+                  boxShadow: 3,
+                  borderRadius: "10px",
+                  marginTop: {
+                    xs: "1rem",
+                  },
+                }}
+              >
+                {" "}
+                <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                  Whatsapp No.
+                </Typography>
+                <TextField
+                  id="filled-basic"
+                  label="Whatsapp"
+                  variant="filled"
+                  required
+                  type="number"
+                  name="whatsapp_number"
+                  onChange={handleInputChange}
+                  sx={{
+                    marginTop: "1rem",
+                    width: "100%",
+                  }}
+                />
+              </Box>
+            </Box>
+
+            {/* Email id Field */}
+            <Box
+              sx={{
+                padding: "30px",
+                boxShadow: 3,
+                borderRadius: "10px",
+              }}
+            >
               <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
-                Submitted No.
+                Email id
               </Typography>
               <TextField
                 id="filled-basic"
-                label="Contact"
+                label="user@gmail.com"
                 variant="filled"
-                type="number"
-                sx={{
-                  marginTop: "1rem",
-                  width: "100%",
-                }}
+                required
+                name="email"
+                onChange={handleInputChange}
+                sx={{ marginTop: "1rem", width: "100%" }}
               />
             </Box>
-          </Box>
-          <Button
-            component="label"
-            variant="contained"
-            sx={{
-              width: "100px",
-              borderRadius: "4px",
-              marginTop: "1rem",
-              bgcolor: "#2ED47A",
-              color: "#ffffff",
-              "&:hover": {
+
+            {/* Additional information */}
+            <Typography
+              sx={{
+                fontWeight: 600,
+                color: "#1D242E",
+                fontSize: {
+                  xs: "1.5rem",
+                  sm: "2rem",
+                },
+              }}
+            >
+              Additional Information
+            </Typography>
+            {/* language */}
+            <Box
+              sx={{
+                padding: "30px",
+                boxShadow: 3,
+                borderRadius: "10px",
+              }}
+            >
+              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                Languages
+              </Typography>
+              <TextField
+                id="filled-basic"
+                select
+                label="Languages"
+                variant="filled"
+                required
+                name="languages"
+                onChange={handleInputChange}
+                sx={{
+                  marginTop: "1rem",
+                  width: {
+                    xs: "100%",
+                  },
+                }}
+              >
+                {Languages.map((Languages) => (
+                  <MenuItem key={Languages.value} value={Languages.value}>
+                    {Languages.value}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Box>
+            {/* Activites */}
+            <Box
+              sx={{
+                padding: "30px",
+                boxShadow: 3,
+                borderRadius: "10px",
+              }}
+            >
+              <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                Activites
+              </Typography>
+              <TextField
+                id="filled-basic"
+                select
+                label="Activites"
+                variant="filled"
+                required
+                name="activities"
+                onChange={handleInputChange}
+                sx={{
+                  marginTop: "1rem",
+                  width: {
+                    xs: "100%",
+                  },
+                }}
+              >
+                {Activites.map((Activites) => (
+                  <MenuItem key={Activites.value} value={Activites.value}>
+                    {Activites.value}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Box>
+            {/* Hobbies */}
+            <Box
+              sx={{
+                padding: "30px",
+                boxShadow: 3,
+                borderRadius: "10px",
+              }}
+            >
+              <Typography
+                sx={{
+                  color: "#000",
+                  fontSize: "1.2rem",
+                  fontWeight: 600,
+                  letterSpacing: "2.6px",
+                }}
+              >
+                Hobbies
+              </Typography>
+              <TextField
+                id="filled-basic"
+                select
+                label="Hobbies"
+                variant="filled"
+                required
+                name="hobbies"
+                onChange={handleInputChange}
+                sx={{
+                  marginTop: "1rem",
+                  width: {
+                    xs: "100%",
+                  },
+                }}
+              >
+                {Hobbies.map((Hobbies) => (
+                  <MenuItem key={Hobbies.value} value={Hobbies.value}>
+                    {Hobbies.value}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Box>
+
+            {/* Guide Spot */}
+            <Typography
+              sx={{
+                fontWeight: 600,
+                color: "#1D242E",
+                fontSize: {
+                  xs: "1.5rem",
+                  sm: "2rem",
+                },
+              }}
+            >
+              Guide Spot
+            </Typography>
+            <Box
+              sx={{
+                display: {
+                  sm: "flex",
+                },
+                flexDirection: {
+                  xs: "column",
+                  sm: "row",
+                },
+                gap: "20px",
+              }}
+            >
+              <Box
+                sx={{
+                  width: {
+                    xs: "100%",
+                    sm: "50%",
+                  },
+                  padding: "30px",
+                  boxShadow: 3,
+                  borderRadius: "10px",
+                  marginTop: {
+                    xs: "1rem",
+                  },
+                }}
+              >
+                {" "}
+                <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                  City
+                </Typography>
+                <TextField
+                  id="filled-basic"
+                  select
+                  label="City"
+                  variant="filled"
+                  required
+                  name="guide_spot_city"
+                  onChange={handleInputChange}
+                  sx={{
+                    marginTop: "1rem",
+                    width: {
+                      xs: "100%",
+                    },
+                  }}
+                >
+                  {City.map((city) => (
+                    <MenuItem key={city.value} value={city.value}>
+                      {city.value}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              </Box>
+              <Box
+                sx={{
+                  width: {
+                    xs: "100%",
+                    sm: "50%",
+                  },
+                  padding: "30px",
+                  boxShadow: 3,
+                  borderRadius: "10px",
+                  marginTop: {
+                    xs: "1rem",
+                  },
+                }}
+              >
+                {" "}
+                <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                  Places
+                </Typography>
+                <TextField
+                  id="filled-basic"
+                  select
+                  label="Places"
+                  variant="filled"
+                  required
+                  name="guide_spot_places"
+                  onChange={handleInputChange}
+                  sx={{
+                    marginTop: "1rem",
+                    width: {
+                      xs: "100%",
+                    },
+                  }}
+                >
+                  {City.map((city) => (
+                    <MenuItem key={city.value} value={city.value}>
+                      {city.value}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              </Box>
+            </Box>
+
+            {/* Experience & Price*/}
+            <Typography
+              sx={{
+                fontWeight: 600,
+                color: "#1D242E",
+                fontSize: {
+                  xs: "1.5rem",
+                  sm: "2rem",
+                },
+              }}
+            >
+              Experience & price
+            </Typography>
+            <Box
+              sx={{
+                display: {
+                  sm: "flex",
+                },
+                flexDirection: {
+                  xs: "column",
+                  sm: "row",
+                },
+                gap: "20px",
+              }}
+            >
+              <Box
+                sx={{
+                  width: {
+                    xs: "100%",
+                    sm: "50%",
+                  },
+                  padding: "30px",
+                  boxShadow: 3,
+                  borderRadius: "10px",
+                  marginTop: {
+                    xs: "1rem",
+                  },
+                }}
+              >
+                {" "}
+                <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                  Years of Experience
+                </Typography>
+                <TextField
+                  id="filled-basic"
+                  select
+                  label="Select year"
+                  variant="filled"
+                  required
+                  name="experience"
+                  onChange={handleInputChange}
+                  sx={{
+                    marginTop: "1rem",
+                    width: {
+                      xs: "100%",
+                    },
+                  }}
+                >
+                  {/* {years.map((years) => (
+                    <MenuItem key={years.value} value={years.value}>
+                      {years.value}
+                    </MenuItem>
+                  ))} */}
+                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((value) => (
+                    <MenuItem key={value} value={value}>
+                      {value}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              </Box>
+              <Box
+                sx={{
+                  width: {
+                    xs: "100%",
+                    sm: "50%",
+                  },
+                  padding: "30px",
+                  boxShadow: 3,
+                  borderRadius: "10px",
+                  marginTop: {
+                    xs: "1rem",
+                  },
+                }}
+              >
+                {" "}
+                <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                  Price Per Day
+                </Typography>
+                <TextField
+                  id="filled-basic"
+                  label="Rs"
+                  required
+                  variant="filled"
+                  type="number"
+                  name="price_per_day"
+                  onChange={handleInputChange}
+                  sx={{
+                    marginTop: "1rem",
+                    width: {
+                      xs: "100%",
+                    },
+                  }}
+                />
+              </Box>
+            </Box>
+
+            {/* Kyc Documents*/}
+            {/* Addhar Car */}
+            <Box
+              sx={{
+                padding: "30px",
+                boxShadow: 3,
+                borderRadius: "10px",
+              }}
+            >
+              <Typography sx={{ fontWeight: 600, letterSpacing: "1.6px" }}>
+                Adhaar Card
+              </Typography>
+              <div className="flex items-center gap-4">
+                <Button
+                  component="label"
+                  variant="contained"
+                  startIcon={<EditIcon />}
+                  sx={{
+                    borderRadius: "4px",
+                    marginTop: "1rem",
+                    bgcolor: "#2ED47A",
+                    color: "#ffffff",
+                    "&:hover": {
+                      bgcolor: "#2ED47A",
+                    },
+                  }}
+                >
+                  Add a file
+                  <Input
+                    type="file"
+                    style={{ display: "none" }}
+                    name="aadhar_id"
+                    onChange={handleFileChange}
+                    required
+                  />
+                </Button>
+
+                {selectedFile && (
+                  <Typography sx={{ marginTop: "1rem" }}>
+                    {selectedFile.name}
+                  </Typography>
+                )}
+              </div>
+            </Box>
+
+            {/* Pan id */}
+            <Box
+              sx={{
+                padding: "30px",
+                boxShadow: 3,
+                borderRadius: "10px",
+              }}
+            >
+              <Typography sx={{ fontWeight: 600, letterSpacing: "1.6px" }}>
+                Pan Id
+              </Typography>
+              <div className="flex items-center gap-4">
+                <Button
+                  component="label"
+                  variant="contained"
+                  startIcon={<EditIcon />}
+                  sx={{
+                    borderRadius: "4px",
+                    marginTop: "1rem",
+                    bgcolor: "#2ED47A",
+                    color: "#ffffff",
+                    "&:hover": {
+                      bgcolor: "#2ED47A",
+                    },
+                  }}
+                >
+                  Add a file
+                  <Input
+                    type="file"
+                    style={{ display: "none" }}
+                    name="pan_id"
+                    onChange={handleFileChange}
+                    required
+                  />
+                </Button>
+
+                {selectedFile && (
+                  <Typography sx={{ marginTop: "1rem" }}>
+                    {selectedFile.name}
+                  </Typography>
+                )}
+              </div>
+            </Box>
+
+            {/* Other id */}
+
+            <Box
+              sx={{
+                padding: "30px",
+                boxShadow: 3,
+                borderRadius: "10px",
+              }}
+            >
+              <Typography sx={{ fontWeight: 600, letterSpacing: "1.6px" }}>
+                Other Id
+              </Typography>
+              <div className="flex items-center gap-4">
+                <Button
+                  component="label"
+                  variant="contained"
+                  startIcon={<EditIcon />}
+                  sx={{
+                    borderRadius: "4px",
+                    marginTop: "1rem",
+                    bgcolor: "#2ED47A",
+                    color: "#ffffff",
+                    "&:hover": {
+                      bgcolor: "#2ED47A",
+                    },
+                  }}
+                >
+                  Add a file
+                  <Input
+                    type="file"
+                    style={{ display: "none" }}
+                    name="other_id"
+                    onChange={handleFileChange}
+                    required
+                  />
+                </Button>
+
+                {selectedFile && (
+                  <Typography sx={{ marginTop: "1rem" }}>
+                    {selectedFile.name}
+                  </Typography>
+                )}
+              </div>
+            </Box>
+
+            {/* Submited by and Phone  */}
+            <Box
+              sx={{
+                display: {
+                  sm: "flex",
+                },
+                flexDirection: {
+                  xs: "column",
+                  sm: "row",
+                },
+                gap: "20px",
+              }}
+            >
+              <Box
+                sx={{
+                  width: {
+                    xs: "100%",
+                    sm: "50%",
+                  },
+                  padding: "30px",
+                  boxShadow: 3,
+                  borderRadius: "10px",
+                  marginTop: {
+                    xs: "1rem",
+                  },
+                }}
+              >
+                {" "}
+                <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                  Submitted By
+                </Typography>
+                <TextField
+                  id="filled-basic"
+                  label="Name"
+                  required
+                  name="submitted_by"
+                  onChange={handleInputChange}
+                  variant="filled"
+                  sx={{
+                    marginTop: "1rem",
+                    width: {
+                      xs: "100%",
+                    },
+                  }}
+                />
+              </Box>
+              <Box
+                sx={{
+                  width: {
+                    xs: "100%",
+                    sm: "50%",
+                  },
+                  padding: "30px",
+                  boxShadow: 3,
+                  borderRadius: "10px",
+                  marginTop: {
+                    xs: "1rem",
+                  },
+                }}
+              >
+                {" "}
+                <Typography sx={{ fontWeight: 600, letterSpacing: "2.6px" }}>
+                  Submitted Phone.
+                </Typography>
+                <TextField
+                  id="filled-basic"
+                  label="Contact"
+                  variant="filled"
+                  required
+                  name="submitted_phone"
+                  onChange={handleInputChange}
+                  type="number"
+                  sx={{
+                    marginTop: "1rem",
+                    width: "100%",
+                  }}
+                />
+              </Box>
+            </Box>
+            <Button
+              onClick={handleSubmit}
+              component="label"
+              variant="contained"
+              sx={{
+                width: "100px",
+                borderRadius: "4px",
+                marginTop: "1rem",
                 bgcolor: "#2ED47A",
-              },
-              fontSize: "0.9rem",
-              fontWeight: 700,
-            }}
-          >
-            Submit
-          </Button>
-        </Container>
+                color: "#ffffff",
+                "&:hover": {
+                  bgcolor: "#2ED47A",
+                },
+                fontSize: "0.9rem",
+                fontWeight: 700,
+              }}
+            >
+              Submit
+            </Button>
+          </Container>
+        </form>
       </Box>
     </Box>
   );
