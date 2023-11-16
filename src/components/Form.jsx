@@ -168,7 +168,7 @@ const Form = () => {
     guide_spot_city: "",
     guide_spot_places: "",
     experience: "",
-    price_per_day: 0, // in string
+    price_per_day: "", // in string
     aadhar_id: "image",
     pan_id: "image",
     other_id: "image",
