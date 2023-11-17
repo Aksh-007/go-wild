@@ -7,6 +7,10 @@ import {
   MenuItem,
   Button,
   Input,
+  DialogTitle,
+  Dialog,
+  DialogContent,
+  DialogActions,
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import { useState } from "react";
@@ -18,6 +22,8 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Form = () => {
   // Titles values
@@ -167,7 +173,7 @@ const Form = () => {
     hobbies: "", // not consoling
     guide_spot_city: "",
     guide_spot_places: "",
-    experience: 0,
+    experience: "",
     price_per_day: "", // in string
     submitted_by: "",
     // submitted_name: "", // no field available
@@ -179,6 +185,8 @@ const Form = () => {
     pan_id: null,
     other_id: null,
   });
+  const [successDialogOpen, setSuccessDialogOpen] = useState(false);
+  const [failDialogOpen, setFailDialogOpen] = useState(false);
 
   const handleFileChange = (e) => {
     const { name, files } = e.target;
@@ -210,16 +218,45 @@ const Form = () => {
 
   // const [date, setDate] = useState(null);
 
-  const handleSubmit = (event) => {
-    event.preventDefault(); // Prevents the default form submission behavior
+  const handleSubmit = async (event) => {
+    try {
+      event.preventDefault();
 
-    // submit data
-    const data = { ...formData, ...selectedFiles };
-    // Log the form data
-    console.log("Form Data:", data);
-    // console.log("Image Data:", selectedFiles);
-    // console.log("datwe:", date);
+      // Assuming 'selectedFiles' is the state for file input
+      // You need to handle file input separately if needed
+      const data = { ...formData, ...selectedFiles };
+
+      // Make a request to the endpoint using axios
+      const response = await axios.post(
+        "https://ojasbarik.pythonanywhere.com/test/guide_personal_details/",
+        data
+      );
+
+      if (response.status === 200) {
+        // Handle success
+        setSuccessDialogOpen(true);
+      } else {
+        // Handle failure
+        setFailDialogOpen(true);
+      }
+    } catch (error) {
+      // Handle failure
+      setFailDialogOpen(true);
+      console.log(error);
+    }
   };
+  const handleSuccessDialogClose = () => {
+    // Close the success dialog and navigate to the home page
+    setSuccessDialogOpen(false);
+    // Add logic for navigating to the home page
+  };
+
+  const handleFailDialogClose = () => {
+    // Close the fail dialog
+    setFailDialogOpen(false);
+    // Add logic for resubmission if needed
+  };
+
   return (
     <Box>
       {/* Partner as Tour Guide section */}
@@ -1305,7 +1342,7 @@ const Form = () => {
                   label="Select year"
                   variant="filled"
                   required
-                  value={formData.value}
+                  value={formData.experience}
                   name="experience"
                   onChange={handleInputChange}
                   sx={{
@@ -1597,6 +1634,30 @@ const Form = () => {
             </Button>
           </Container>
         </form>
+
+        {/* Success Dialog */}
+        <Dialog open={successDialogOpen} onClose={handleSuccessDialogClose}>
+          <DialogTitle>Thank You</DialogTitle>
+          <DialogContent>Your submission was successful.</DialogContent>
+          <DialogActions>
+            {/* Add a button for navigating to the home page */}
+            <Button onClick={handleSuccessDialogClose} color="primary">
+              <Link to="/">Home</Link>
+            </Button>
+          </DialogActions>
+        </Dialog>
+
+        {/* Fail Dialog */}
+        <Dialog open={failDialogOpen} onClose={handleFailDialogClose}>
+          <DialogTitle>Fail</DialogTitle>
+          <DialogContent>There was an error in your submission.</DialogContent>
+          <DialogActions>
+            {/* Add a button for resubmission */}
+            <Button onClick={handleFailDialogClose} color="primary">
+              Resubmit
+            </Button>
+          </DialogActions>
+        </Dialog>
       </Box>
     </Box>
   );
