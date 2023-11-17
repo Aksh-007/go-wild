@@ -1638,7 +1638,7 @@ const Form = () => {
         {/* Success Dialog */}
         <Dialog open={successDialogOpen} onClose={handleSuccessDialogClose}>
           <DialogTitle>Thank You</DialogTitle>
-          <DialogContent>Your submission was successful.</DialogContent>
+          <DialogContent>Your Form submission was successful.</DialogContent>
           <DialogActions>
             {/* Add a button for navigating to the home page */}
             <Button onClick={handleSuccessDialogClose} color="primary">
@@ -1650,7 +1650,9 @@ const Form = () => {
         {/* Fail Dialog */}
         <Dialog open={failDialogOpen} onClose={handleFailDialogClose}>
           <DialogTitle>Fail</DialogTitle>
-          <DialogContent>There was an error in your submission.</DialogContent>
+          <DialogContent>
+            There was an error in your form submission.
+          </DialogContent>
           <DialogActions>
             {/* Add a button for resubmission */}
             <Button onClick={handleFailDialogClose} color="primary">
