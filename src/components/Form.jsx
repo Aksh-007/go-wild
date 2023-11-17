@@ -199,7 +199,7 @@ const Form = () => {
   };
 
   const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value, type } = e.target;
 
     if (type === "radio") {
       // Handle radio buttons separately
@@ -211,16 +211,16 @@ const Form = () => {
       // Handle text fields
       setFormData((prevData) => ({
         ...prevData,
-        [name]: type === "checkbox" ? checked : value,
+        [name]: value,
       }));
     }
   };
 
   // const [date, setDate] = useState(null);
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (e) => {
     try {
-      event.preventDefault();
+      e.preventDefault();
 
       // Assuming 'selectedFiles' is the state for file input
       // You need to handle file input separately if needed
@@ -589,6 +589,7 @@ const Form = () => {
                   variant="filled"
                   required
                   name="first_name"
+                  value={formData.first_name}
                   onChange={handleInputChange}
                   sx={{
                     marginTop: "1rem",
@@ -621,6 +622,7 @@ const Form = () => {
                   variant="filled"
                   required
                   name="last_name"
+                  value={formData.last_name}
                   onChange={handleInputChange}
                   sx={{
                     marginTop: "1rem",
@@ -649,6 +651,7 @@ const Form = () => {
                 variant="filled"
                 required
                 name="bio"
+                value={formData.bio}
                 onChange={handleInputChange}
                 sx={{ marginTop: "1rem", width: "100%" }}
               />
@@ -997,6 +1000,7 @@ const Form = () => {
                   variant="filled"
                   required
                   name="contact_number"
+                  value={formData.contact_number}
                   onChange={handleInputChange}
                   type="number"
                   sx={{
@@ -1030,6 +1034,7 @@ const Form = () => {
                   required
                   type="number"
                   name="whatsapp_number"
+                  value={formData.whatsapp_number}
                   onChange={handleInputChange}
                   sx={{
                     marginTop: "1rem",
@@ -1056,6 +1061,7 @@ const Form = () => {
                 variant="filled"
                 required
                 name="email"
+                value={formData.email}
                 onChange={handleInputChange}
                 sx={{ marginTop: "1rem", width: "100%" }}
               />
@@ -1357,7 +1363,7 @@ const Form = () => {
                       {years.value}
                     </MenuItem>
                   ))} */}
-                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((value) => (
+                  {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((value) => (
                     <MenuItem key={value} value={value}>
                       {value}
                     </MenuItem>
@@ -1389,6 +1395,7 @@ const Form = () => {
                   variant="filled"
                   type="number"
                   name="price_per_day"
+                  value={formData.price_per_day}
                   onChange={handleInputChange}
                   sx={{
                     marginTop: "1rem",
@@ -1432,6 +1439,7 @@ const Form = () => {
                     type="file"
                     style={{ display: "none" }}
                     name="aadhar_id"
+                    value={formData.aadhar_id}
                     onChange={handleFileChange}
                     required
                   />
@@ -1570,6 +1578,7 @@ const Form = () => {
                   label="Name"
                   required
                   name="submitted_by"
+                  value={formData.submitted_by}
                   onChange={handleInputChange}
                   variant="filled"
                   sx={{
@@ -1604,6 +1613,7 @@ const Form = () => {
                   variant="filled"
                   required
                   name="submitted_phone"
+                  value={formData.submitted_phone}
                   onChange={handleInputChange}
                   type="number"
                   sx={{
