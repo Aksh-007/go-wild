@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import {
   Box,
   Typography,
@@ -153,7 +154,6 @@ const Form = () => {
     first_name: "",
     last_name: "",
     bio: "",
-    image: "image",
     dob: null, // not consoling
     gender: "male",
     guide_city: "",
@@ -169,18 +169,28 @@ const Form = () => {
     guide_spot_places: "",
     experience: "",
     price_per_day: "", // in string
-    aadhar_id: "image",
-    pan_id: "image",
-    other_id: "image",
     submitted_by: "",
     submitted_name: "", // no field available
     submitted_phone: "",
   });
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedFiles, setSelectedFiles] = useState({
+    image: null,
+    aadhar_id: null,
+    pan_id: null,
+    other_id: null,
+  });
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    setSelectedFile(file);
+  const handleFileChange = (e) => {
+    const { name, files } = e.target;
+
+    // Update the state based on the file input name
+    setSelectedFiles((prevFiles) => ({
+      ...prevFiles,
+      [name]: files[0],
+    }));
+
+    // Log the selected files
+    // console.log(`Selected ${name} file:`, files[0]);
   };
 
   const handleInputChange = (e) => {
@@ -201,16 +211,15 @@ const Form = () => {
     }
   };
 
-  // Handle date of birth change
-  // const handleDateOfBirthChange = (date) => {
-  //   setFormData({ ...formData, dateOfBirth: date });
-  // };
+  const [date, setDate] = useState(null);
 
   const handleSubmit = (event) => {
     event.preventDefault(); // Prevents the default form submission behavior
 
     // Log the form data
     console.log("Form Data:", formData);
+    console.log("Image Data:", selectedFiles);
+    console.log("datwe:", date);
   };
   return (
     <Box>
@@ -502,6 +511,7 @@ const Form = () => {
                   select
                   label="Titles"
                   variant="filled"
+                  value=""
                   required
                   name="titles"
                   // value={formData.title}
@@ -640,13 +650,13 @@ const Form = () => {
                     type="file"
                     style={{ display: "none" }}
                     name="image"
-                    onChange={handleInputChange}
+                    onChange={handleFileChange}
                   />
                 </Button>
 
-                {selectedFile && (
+                {selectedFiles.image && (
                   <Typography sx={{ marginTop: "1rem" }}>
-                    {selectedFile.name}
+                    {selectedFiles.image.name}
                   </Typography>
                 )}
               </div>
@@ -686,7 +696,8 @@ const Form = () => {
                   <DatePicker
                     required
                     name="dob"
-                    onChange={handleFileChange}
+                    value={formData.dob}
+                    onChange={(newValue) => setDate(newValue)}
                     sx={{
                       marginTop: "1rem",
                       width: {
@@ -801,6 +812,7 @@ const Form = () => {
                   required
                   variant="filled"
                   name="guide_city"
+                  value=""
                   onChange={handleInputChange}
                   sx={{
                     marginTop: "1rem",
@@ -841,6 +853,7 @@ const Form = () => {
                   variant="filled"
                   required
                   name="guide_state"
+                  value=""
                   onChange={handleInputChange}
                   sx={{
                     marginTop: "1rem",
@@ -880,6 +893,7 @@ const Form = () => {
                   label="Country"
                   variant="filled"
                   name="guide_country"
+                  value=""
                   onChange={handleInputChange}
                   required
                   sx={{
@@ -1042,6 +1056,7 @@ const Form = () => {
                 variant="filled"
                 required
                 name="languages"
+                value=""
                 onChange={handleInputChange}
                 sx={{
                   marginTop: "1rem",
@@ -1075,6 +1090,7 @@ const Form = () => {
                 variant="filled"
                 required
                 name="activities"
+                value=""
                 onChange={handleInputChange}
                 sx={{
                   marginTop: "1rem",
@@ -1115,6 +1131,7 @@ const Form = () => {
                 variant="filled"
                 required
                 name="hobbies"
+                value=""
                 onChange={handleInputChange}
                 sx={{
                   marginTop: "1rem",
@@ -1181,6 +1198,7 @@ const Form = () => {
                   variant="filled"
                   required
                   name="guide_spot_city"
+                  value=""
                   onChange={handleInputChange}
                   sx={{
                     marginTop: "1rem",
@@ -1221,6 +1239,7 @@ const Form = () => {
                   variant="filled"
                   required
                   name="guide_spot_places"
+                  value=""
                   onChange={handleInputChange}
                   sx={{
                     marginTop: "1rem",
@@ -1287,6 +1306,7 @@ const Form = () => {
                   label="Select year"
                   variant="filled"
                   required
+                  value={1}
                   name="experience"
                   onChange={handleInputChange}
                   sx={{
@@ -1381,9 +1401,9 @@ const Form = () => {
                   />
                 </Button>
 
-                {selectedFile && (
+                {selectedFiles.aadhar_id && (
                   <Typography sx={{ marginTop: "1rem" }}>
-                    {selectedFile.name}
+                    {selectedFiles.aadhar_id.name}
                   </Typography>
                 )}
               </div>
@@ -1425,9 +1445,9 @@ const Form = () => {
                   />
                 </Button>
 
-                {selectedFile && (
+                {selectedFiles.pan_id && (
                   <Typography sx={{ marginTop: "1rem" }}>
-                    {selectedFile.name}
+                    {selectedFiles.pan_id.name}
                   </Typography>
                 )}
               </div>
@@ -1470,9 +1490,9 @@ const Form = () => {
                   />
                 </Button>
 
-                {selectedFile && (
+                {selectedFiles.other_id && (
                   <Typography sx={{ marginTop: "1rem" }}>
-                    {selectedFile.name}
+                    {selectedFiles.other_id.name}
                   </Typography>
                 )}
               </div>
