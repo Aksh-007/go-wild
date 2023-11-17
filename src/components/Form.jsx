@@ -167,10 +167,10 @@ const Form = () => {
     hobbies: "", // not consoling
     guide_spot_city: "",
     guide_spot_places: "",
-    experience: "",
+    experience: 0,
     price_per_day: "", // in string
     submitted_by: "",
-    submitted_name: "", // no field available
+    // submitted_name: "", // no field available
     submitted_phone: "",
   });
   const [selectedFiles, setSelectedFiles] = useState({
@@ -188,9 +188,6 @@ const Form = () => {
       ...prevFiles,
       [name]: files[0],
     }));
-
-    // Log the selected files
-    // console.log(`Selected ${name} file:`, files[0]);
   };
 
   const handleInputChange = (e) => {
@@ -211,15 +208,17 @@ const Form = () => {
     }
   };
 
-  const [date, setDate] = useState(null);
+  // const [date, setDate] = useState(null);
 
   const handleSubmit = (event) => {
     event.preventDefault(); // Prevents the default form submission behavior
 
+    // submit data
+    const data = { ...formData, ...selectedFiles };
     // Log the form data
-    console.log("Form Data:", formData);
-    console.log("Image Data:", selectedFiles);
-    console.log("datwe:", date);
+    console.log("Form Data:", data);
+    // console.log("Image Data:", selectedFiles);
+    // console.log("datwe:", date);
   };
   return (
     <Box>
@@ -511,7 +510,7 @@ const Form = () => {
                   select
                   label="Titles"
                   variant="filled"
-                  value=""
+                  value={formData.titles}
                   required
                   name="titles"
                   // value={formData.title}
@@ -697,7 +696,7 @@ const Form = () => {
                     required
                     name="dob"
                     value={formData.dob}
-                    onChange={(newValue) => setDate(newValue)}
+                    onChange={handleInputChange}
                     sx={{
                       marginTop: "1rem",
                       width: {
@@ -812,7 +811,7 @@ const Form = () => {
                   required
                   variant="filled"
                   name="guide_city"
-                  value=""
+                  value={formData.guide_city}
                   onChange={handleInputChange}
                   sx={{
                     marginTop: "1rem",
@@ -853,7 +852,7 @@ const Form = () => {
                   variant="filled"
                   required
                   name="guide_state"
-                  value=""
+                  value={formData.guide_state}
                   onChange={handleInputChange}
                   sx={{
                     marginTop: "1rem",
@@ -893,7 +892,7 @@ const Form = () => {
                   label="Country"
                   variant="filled"
                   name="guide_country"
-                  value=""
+                  value={formData.guide_country}
                   onChange={handleInputChange}
                   required
                   sx={{
@@ -1056,7 +1055,7 @@ const Form = () => {
                 variant="filled"
                 required
                 name="languages"
-                value=""
+                value={formData.languages}
                 onChange={handleInputChange}
                 sx={{
                   marginTop: "1rem",
@@ -1090,7 +1089,7 @@ const Form = () => {
                 variant="filled"
                 required
                 name="activities"
-                value=""
+                value={formData.activities}
                 onChange={handleInputChange}
                 sx={{
                   marginTop: "1rem",
@@ -1131,7 +1130,7 @@ const Form = () => {
                 variant="filled"
                 required
                 name="hobbies"
-                value=""
+                value={formData.hobbies}
                 onChange={handleInputChange}
                 sx={{
                   marginTop: "1rem",
@@ -1198,7 +1197,7 @@ const Form = () => {
                   variant="filled"
                   required
                   name="guide_spot_city"
-                  value=""
+                  value={formData.guide_spot_city}
                   onChange={handleInputChange}
                   sx={{
                     marginTop: "1rem",
@@ -1239,7 +1238,7 @@ const Form = () => {
                   variant="filled"
                   required
                   name="guide_spot_places"
-                  value=""
+                  value={formData.guide_spot_places}
                   onChange={handleInputChange}
                   sx={{
                     marginTop: "1rem",
@@ -1306,7 +1305,7 @@ const Form = () => {
                   label="Select year"
                   variant="filled"
                   required
-                  value={1}
+                  value={formData.value}
                   name="experience"
                   onChange={handleInputChange}
                   sx={{
